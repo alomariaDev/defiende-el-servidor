@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# Local data and model artifacts (tracked through DVC where appropriate)
+data/raw/*
+data/processed/*
+models/*
+
+# MLflow local tracking store; export deliverables live under evidencias/mlflow/
+mlruns/
+mlflow.db
+
+# Credentials and local configuration
+*.token
+secrets.*
+
+# OS/editor
+.DS_Store
+.vscode/
+.idea/
+/UNSW_NB15_training-set.csv
+/UNSW_NB15_testing-set.csv

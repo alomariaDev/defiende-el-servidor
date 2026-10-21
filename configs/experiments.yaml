@@ -1,0 +1,37 @@
+seed: 42
+experiment_name: defiende-el-servidor
+configs:
+  - id: lr_c0_5
+    family: logistic_regression
+    hypothesis: "Un C moderado con balance de clases puede mejorar el macro-F1 sin perder demasiada detección de ataques."
+    parameters:
+      C: 0.5
+      class_weight: balanced
+      max_iter: 1500
+      solver: lbfgs
+  - id: lr_c2
+    family: logistic_regression
+    hypothesis: "Una regularización menor (C=2) puede capturar más patrones y elevar el recall de ataques frente a C=0.5."
+    parameters:
+      C: 2.0
+      class_weight: balanced
+      max_iter: 1500
+      solver: lbfgs
+  - id: rf_leaf2
+    family: random_forest
+    hypothesis: "Árboles no lineales con hojas pequeñas pueden capturar interacciones y mejorar el macro-F1 frente a la regresión logística."
+    parameters:
+      n_estimators: 200
+      max_features: sqrt
+      min_samples_leaf: 2
+      class_weight: balanced_subsample
+      n_jobs: -1
+  - id: rf_leaf5
+    family: random_forest
+    hypothesis: "Aumentar el tamaño mínimo de hoja a 5 puede reducir varianza y mejorar generalización respecto a rf_leaf2."
+    parameters:
+      n_estimators: 200
+      max_features: sqrt
+      min_samples_leaf: 5
+      class_weight: balanced_subsample
+      n_jobs: -1
