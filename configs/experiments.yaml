@@ -1,37 +1,31 @@
 seed: 42
 experiment_name: defiende-el-servidor
 configs:
-  - id: lr_c0_5
+  - id: lr_c1
     family: logistic_regression
-    hypothesis: "Un C moderado con balance de clases puede mejorar el macro-F1 sin perder demasiada detección de ataques."
+    hypothesis: "Una regresión logística con C=1 y pesos balanceados proporciona la línea base lineal para detectar ataques."
     parameters:
-      C: 0.5
+      C: 1.0
       class_weight: balanced
       max_iter: 1500
       solver: lbfgs
-  - id: lr_c2
+  - id: lr_c0_1
     family: logistic_regression
-    hypothesis: "Una regularización menor (C=2) puede capturar más patrones y elevar el recall de ataques frente a C=0.5."
+    hypothesis: "Reducir C de 1 a 0.1 aumenta la regularización y podría mejorar la generalización frente a la línea base."
     parameters:
-      C: 2.0
+      C: 0.1
       class_weight: balanced
       max_iter: 1500
       solver: lbfgs
-  - id: rf_leaf2
-    family: random_forest
-    hypothesis: "Árboles no lineales con hojas pequeñas pueden capturar interacciones y mejorar el macro-F1 frente a la regresión logística."
+  - id: dt_depth5
+    family: decision_tree
+    hypothesis: "Cambiar de regresión logística a un árbol de decisión con profundidad 5 permite capturar relaciones no lineales controlando complejidad."
     parameters:
-      n_estimators: 200
-      max_features: sqrt
-      min_samples_leaf: 2
-      class_weight: balanced_subsample
-      n_jobs: -1
-  - id: rf_leaf5
-    family: random_forest
-    hypothesis: "Aumentar el tamaño mínimo de hoja a 5 puede reducir varianza y mejorar generalización respecto a rf_leaf2."
+      max_depth: 5
+      class_weight: balanced
+  - id: dt_depth15
+    family: decision_tree
+    hypothesis: "Aumentar la profundidad máxima de 5 a 15 podría capturar interacciones más complejas, con mayor riesgo de sobreajuste."
     parameters:
-      n_estimators: 200
-      max_features: sqrt
-      min_samples_leaf: 5
-      class_weight: balanced_subsample
-      n_jobs: -1
+      max_depth: 15
+      class_weight: balanced

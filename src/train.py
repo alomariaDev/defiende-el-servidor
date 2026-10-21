@@ -13,7 +13,7 @@ import yaml
 from mlflow.models import infer_signature
 from mlflow.tracking import MlflowClient
 from sklearn.compose import ColumnTransformer
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.impute import SimpleImputer
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, f1_score, precision_score, recall_score
@@ -48,8 +48,8 @@ def build_pipeline(family: str, params: dict, seed: int, x_train: pd.DataFrame) 
     )
     if family == "logistic_regression":
         estimator = LogisticRegression(random_state=seed, **params)
-    elif family == "random_forest":
-        estimator = RandomForestClassifier(random_state=seed, **params)
+    elif family == "decision_tree":
+        estimator = DecisionTreeClassifier(random_state=seed, **params)
     else:
         raise ValueError(f"Unknown model family: {family}")
     return Pipeline([("preprocessor", preprocessor), ("estimator", estimator)])
@@ -123,6 +123,7 @@ def main() -> None:
     mlflow.set_experiment(experiments["experiment_name"])
     git_commit = os.popen(f"git -C {ROOT} rev-parse HEAD").read().strip() or "uncommitted"
     data_version = {
+        "processed_dvc_md5": yaml.safe_load((ROOT / "data/processed.dvc").read_text())["outs"][0]["md5"],
         "training_csv_sha256": sha256(ROOT / data_config["train_path"]),
         "train_split_sha256": sha256(train_path),
         "validation_split_sha256": sha256(val_path),
@@ -149,10 +150,12 @@ def main() -> None:
                 "git_commit": git_commit,
                 "data_version": json.dumps(data_version, sort_keys=True),
                 "target_positive_class": "1=attack",
+                "zero_denominator_policy": "precision, recall, FPR y macro-F1 usan zero_division=0; FPR es 0 si no hay negativos reales.",
             })
             mlflow.log_params({"seed": experiments["seed"], **item["parameters"]})
             mlflow.log_metrics({key: value for key, value in chosen.items() if isinstance(value, (int, float))})
             mlflow.log_dict(data_version, "data_version.json")
+            mlflow.log_dict({"labels": [0, 1], "rows": chosen["confusion_matrix"]}, "confusion_matrix.json")
             mlflow.sklearn.log_model(
                 model,
                 name="model",

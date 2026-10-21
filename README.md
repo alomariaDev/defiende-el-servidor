@@ -4,7 +4,7 @@ Proyecto del taller de MLOps para clasificar tráfico normal/ataque con UNSW-NB1
 
 ## Estado
 
-Estructura inicial. El pipeline, las auditorías, los experimentos y las evidencias se completarán paso a paso con resultados obtenidos al ejecutar el código en este workspace.
+Fase 1 completada: auditoría y split agrupado desde el CSV de entrenamiento. Fase 2: pipeline y cuatro experimentos configurados; las métricas finales se generan al ejecutar `src/train.py` y se guardan en `evidencias/experimentos.csv`.
 
 ## Datos
 
@@ -35,3 +35,17 @@ git commit -m "data: version source and prepared datasets"
 ```
 
 La autenticación de DVC usa `AWS_ACCESS_KEY_ID` y `AWS_SECRET_ACCESS_KEY` en el entorno de la terminal; no guardar credenciales en archivos.
+
+## Fase 2: experimentos
+
+`data/processed.dvc` versiona `train.csv`, `val.csv` e `split_indices.csv`; su hash de directorio se registra en cada run como versión DVC. El preprocesamiento (imputación, codificación y escalado) está dentro del pipeline de scikit-learn y se ajusta al llamar `fit` únicamente con `train.csv`. Se excluyen `row_id`, `id`, `label` y `attack_cat` de las entradas.
+
+Las cuatro configuraciones usan la semilla 42 y los mismos splits: regresión logística con `C=1` (línea base), regresión logística con `C=0.1` (más regularización), árbol de decisión con profundidad 5 (cambio de familia) y árbol con profundidad 15 (mayor complejidad). Cada hipótesis y parámetros están en `configs/experiments.yaml`.
+
+El umbral se selecciona maximizando macro-F1 en validación. La clase positiva es `1` (ataque). Para denominadores cero, precision, recall y F1 usan `zero_division=0`; FPR es 0 si no hay negativos reales. La matriz de confusión se guarda como artefacto JSON en cada run. Los modelos completos se registran en MLflow local; no se evalúa el conjunto de test durante esta fase.
+
+Para ejecutar desde la raíz del proyecto:
+
+```bash
+.venv/bin/python src/train.py
+```
