@@ -108,10 +108,15 @@ def main() -> None:
     x_train, y_train = train[feature_columns], train[data_config["label_column"]]
     x_val, y_val = validation[feature_columns], validation[data_config["label_column"]].to_numpy()
 
-    tracking_dir = ROOT / "evidencias/mlflow/tracking"
-    tracking_dir.mkdir(parents=True, exist_ok=True)
-    mlflow.set_tracking_uri(tracking_dir.as_uri())
-    mlflow.set_experiment(experiments["experiment_name"])
+    tracking_dir = ROOT / "evidencias/mlflow"
+    artifact_dir = tracking_dir / "artifacts"
+    artifact_dir.mkdir(parents=True, exist_ok=True)
+    database_path = tracking_dir / "mlflow.db"
+    mlflow.set_tracking_uri(f"sqlite:///{database_path}")
+    mlflow.set_experiment(
+        experiments["experiment_name"],
+        artifact_location=artifact_dir.as_uri(),
+    )
     git_commit = os.popen(f"git -C {ROOT} rev-parse HEAD").read().strip() or "uncommitted"
     data_version = {
         "training_csv_sha256": sha256(ROOT / data_config["train_path"]),
