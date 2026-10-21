@@ -136,7 +136,10 @@ def main() -> None:
         threshold = select_threshold_macro_f1(y_val, scores)
         chosen = metrics_at_threshold(y_val, scores, threshold)
         predictions = (scores >= chosen["threshold"]).astype(int)
-        signature = infer_signature(x_val.head(10), model.predict(x_val.head(10)))
+        signature_input = x_val.head(10).copy()
+        integer_columns = signature_input.select_dtypes(include=["integer"]).columns
+        signature_input[integer_columns] = signature_input[integer_columns].astype(float)
+        signature = infer_signature(signature_input, model.predict(signature_input))
 
         with mlflow.start_run(run_name=item["id"]) as run:
             mlflow.set_tags({
@@ -154,8 +157,8 @@ def main() -> None:
                 model,
                 name="model",
                 signature=signature,
-                input_example=x_val.head(3),
-                skops_trusted_types=["numpy.dtype"],
+                input_example=signature_input.head(3),
+                skops_trusted_types=["numpy.dtype", "sklearn.tree._tree.Tree"],
             )
 
         result = {
