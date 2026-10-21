@@ -82,5 +82,10 @@
       "false_negatives": -596
     }
   },
-  "accepted_errors": "Accept 484 additional false positives on validation to reduce false negatives by 596; test labels were not read."
+  "accepted_errors": "Accept 484 additional false positives on validation to reduce false negatives by 596; test labels were not read.",
+  "huggingface": {
+    "repo_id": "mariisabell/unsw-nb15-detector",
+    "v1_commit_sha": "04f723fe871e9b2f3b10b2ccd88cb2b45f587b53",
+    "v2_commit_sha": "03e583e00e2c3d5dda0d0eb1fb9364ab1b86c2d6"
+  }
 }

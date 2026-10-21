@@ -1,0 +1,37 @@
+{
+  "repo_id": "mariisabell/unsw-nb15-detector",
+  "repo_type": "model",
+  "revisions": {
+    "v1": {
+      "commit_sha": "04f723fe871e9b2f3b10b2ccd88cb2b45f587b53",
+      "run_id": "ffdf524d57f749d28b5ed7fceb0fa0bf",
+      "threshold": 0.5,
+      "model_sha256": "e0f3019485ecfaa7418c7d4c31b7d130b1c5f003162de5f925d83561b7683dc3",
+      "git_tag": "v1",
+      "git_commit": "c2891e168109f7ab89dec90ce8d188ac687c1539",
+      "dvc_pointer": "data/processed.dvc",
+      "dvc_directory_md5": "a065edaae55501c53239ceade3a3a8e0.dir",
+      "downloaded_by_sha": "04f723fe871e9b2f3b10b2ccd88cb2b45f587b53",
+      "loaded_pipeline_steps": [
+        "preprocessor",
+        "estimator"
+      ]
+    },
+    "v2": {
+      "commit_sha": "03e583e00e2c3d5dda0d0eb1fb9364ab1b86c2d6",
+      "run_id": "ffdf524d57f749d28b5ed7fceb0fa0bf",
+      "threshold": 0.3903680448122325,
+      "model_sha256": "e0f3019485ecfaa7418c7d4c31b7d130b1c5f003162de5f925d83561b7683dc3",
+      "git_tag": "v2",
+      "git_commit": "f83efdcbb4eb75db01b4f27a79ed4a6393cc6e3c",
+      "dvc_pointer": "data/processed.dvc",
+      "dvc_directory_md5": "a065edaae55501c53239ceade3a3a8e0.dir",
+      "downloaded_by_sha": "03e583e00e2c3d5dda0d0eb1fb9364ab1b86c2d6",
+      "loaded_pipeline_steps": [
+        "preprocessor",
+        "estimator"
+      ]
+    }
+  },
+  "verification": "Each revision was downloaded by its full commit SHA and loaded from the skops artifact."
+}

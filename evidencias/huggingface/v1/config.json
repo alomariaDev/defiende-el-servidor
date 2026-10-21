@@ -1,0 +1,34 @@
+{
+  "version": "v1",
+  "repo_id": "mariisabell/unsw-nb15-detector",
+  "model_path": "model",
+  "model_file": "model/model.skops",
+  "decision_threshold": 0.5,
+  "positive_class": 1,
+  "positive_class_meaning": "attack",
+  "git_tag": "v1",
+  "git_commit": "c2891e168109f7ab89dec90ce8d188ac687c1539",
+  "git_model_source_commit": "c2891e168109f7ab89dec90ce8d188ac687c1539",
+  "dvc_pointer": "data/processed.dvc",
+  "dvc_directory_md5": "a065edaae55501c53239ceade3a3a8e0.dir",
+  "mlflow_run_id": "ffdf524d57f749d28b5ed7fceb0fa0bf",
+  "validation_metrics": {
+    "threshold": 0.5,
+    "recall_attack": 0.9539531570788118,
+    "precision_attack": 0.9479162329822224,
+    "fpr": 0.11169642857142857,
+    "macro_f1": 0.9226488208398218,
+    "confusion_matrix_labels_0_1": [
+      [
+        9949,
+        1251
+      ],
+      [
+        1099,
+        22768
+      ]
+    ],
+    "false_positives": 1251,
+    "false_negatives": 1099
+  }
+}
