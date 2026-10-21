@@ -1,6 +1,7 @@
 {
+  "source_file": "data/raw/UNSW_NB15_training-set.csv",
   "seed": 42,
-  "method": "StratifiedGroupKFold; first fold; groups are hashes of model-input columns",
+  "method": "StratifiedGroupKFold; first fold; equal uint64 predictor fingerprints stay together",
   "requested_validation_fraction": 0.2,
   "train_rows": 140274,
   "validation_rows": 35067,
@@ -16,8 +17,6 @@
   "train_unique_input_groups": 80821,
   "validation_unique_input_groups": 20219,
   "overlapping_input_groups": 0,
-  "files": [
-    "data/processed/train.csv",
-    "data/processed/val.csv"
-  ]
+  "indices_file": "data/processed/split_indices.csv",
+  "indices_are_zero_based_source_row_positions": true
 }
