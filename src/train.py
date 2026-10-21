@@ -150,7 +150,13 @@ def main() -> None:
             mlflow.log_params({"seed": experiments["seed"], **item["parameters"]})
             mlflow.log_metrics({key: value for key, value in chosen.items() if isinstance(value, (int, float))})
             mlflow.log_dict(data_version, "data_version.json")
-            mlflow.sklearn.log_model(model, name="model", signature=signature, input_example=x_val.head(3))
+            mlflow.sklearn.log_model(
+                model,
+                name="model",
+                signature=signature,
+                input_example=x_val.head(3),
+                skops_trusted_types=["numpy.dtype"],
+            )
 
         result = {
             "config_id": item["id"],
