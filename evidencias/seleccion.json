@@ -1,0 +1,86 @@
+{
+  "version_selected": "v2",
+  "single_change": {
+    "field": "decision_threshold",
+    "from_v1": 0.5,
+    "to_v2": 0.3903680448122325,
+    "model_and_preprocessing_unchanged": true
+  },
+  "run_id": "ffdf524d57f749d28b5ed7fceb0fa0bf",
+  "model": {
+    "config_id": "lr_c1",
+    "family": "logistic_regression",
+    "parameters": {
+      "C": 1.0,
+      "class_weight": "balanced",
+      "max_iter": 1500,
+      "solver": "lbfgs"
+    },
+    "mlflow_model_id": "m-021b714efe23458780e0273d739de6ad",
+    "artifact_file": "model.skops",
+    "artifact_sha256": "e0f3019485ecfaa7418c7d4c31b7d130b1c5f003162de5f925d83561b7683dc3"
+  },
+  "git_reference": {
+    "model_source_commit": "c2891e168109f7ab89dec90ce8d188ac687c1539",
+    "v1_tag": "v1",
+    "freeze_tag": "v2"
+  },
+  "dvc_reference": {
+    "pointer_file": "data/processed.dvc",
+    "directory_md5": "a065edaae55501c53239ceade3a3a8e0.dir"
+  },
+  "selection_basis": {
+    "dataset": "validation only",
+    "criterion": "maximum macro-F1 over thresholds for the lr_c1 validation scores",
+    "reason": "Changing only the threshold from 0.5 to the validation-selected value raises macro-F1 and attack recall; the tradeoff is more false positives and a higher FPR."
+  },
+  "validation_comparison": {
+    "v1_fixed_threshold_0_5": {
+      "threshold": 0.5,
+      "recall_attack": 0.9539531570788118,
+      "precision_attack": 0.9479162329822224,
+      "fpr": 0.11169642857142857,
+      "macro_f1": 0.9226488208398218,
+      "confusion_matrix_labels_0_1": [
+        [
+          9949,
+          1251
+        ],
+        [
+          1099,
+          22768
+        ]
+      ],
+      "false_positives": 1251,
+      "false_negatives": 1099
+    },
+    "v2_selected_threshold": {
+      "threshold": 0.3903680448122325,
+      "recall_attack": 0.9789248753509029,
+      "precision_attack": 0.9308737399896411,
+      "fpr": 0.1549107142857143,
+      "macro_f1": 0.9242845966144494,
+      "confusion_matrix_labels_0_1": [
+        [
+          9465,
+          1735
+        ],
+        [
+          503,
+          23364
+        ]
+      ],
+      "false_positives": 1735,
+      "false_negatives": 503
+    },
+    "delta_v2_minus_v1": {
+      "recall_attack": 0.024971718272091104,
+      "precision_attack": -0.017042492992581315,
+      "fpr": 0.04321428571428572,
+      "macro_f1": 0.0016357757746275903,
+      "false_positives": 484,
+      "false_negatives": -596
+    }
+  },
+  "accepted_errors": "Accept 484 additional false positives on validation to reduce false negatives by 596; test labels were not read."
+}
