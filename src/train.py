@@ -11,6 +11,7 @@ import numpy as np
 import pandas as pd
 import yaml
 from mlflow.models import infer_signature
+from mlflow.tracking import MlflowClient
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.impute import SimpleImputer
@@ -113,10 +114,13 @@ def main() -> None:
     artifact_dir.mkdir(parents=True, exist_ok=True)
     database_path = tracking_dir / "mlflow.db"
     mlflow.set_tracking_uri(f"sqlite:///{database_path}")
-    mlflow.set_experiment(
-        experiments["experiment_name"],
-        artifact_location=artifact_dir.as_uri(),
-    )
+    client = MlflowClient()
+    if client.get_experiment_by_name(experiments["experiment_name"]) is None:
+        client.create_experiment(
+            experiments["experiment_name"],
+            artifact_location=artifact_dir.as_uri(),
+        )
+    mlflow.set_experiment(experiments["experiment_name"])
     git_commit = os.popen(f"git -C {ROOT} rev-parse HEAD").read().strip() or "uncommitted"
     data_version = {
         "training_csv_sha256": sha256(ROOT / data_config["train_path"]),
