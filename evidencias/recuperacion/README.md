@@ -21,11 +21,13 @@ Ese modo solo usa `data/processed/val.csv` y los modelos locales del Hub. Calcul
 
 Desde el workspace original actualizado, establece las credenciales de DagsHub en variables de entorno, nunca en archivos. El acceso DVC usa `AWS_ACCESS_KEY_ID` y `AWS_SECRET_ACCESS_KEY`. Si el repo HF es privado, define `HF_TOKEN`; no hace falta para un repo público. No incluyas los valores en los comandos registrados.
 
-En Bash puedes pedir los valores sin mostrarlos en pantalla; `AWS_ACCESS_KEY_ID` corresponde al usuario de DagsHub y `AWS_SECRET_ACCESS_KEY` al token de acceso DagsHub:
+En el remote S3 de DagsHub, usa el **mismo token DagsHub como ambos valores** (`AWS_ACCESS_KEY_ID` y `AWS_SECRET_ACCESS_KEY`). La documentación oficial indica esa configuración para el almacenamiento S3 compatible de DagsHub ([DagsHub Storage](https://dagshub.com/docs/feature_guide/dagshub_storage/)). En Bash puedes pedirlo una sola vez sin mostrarlo en pantalla:
 
 ```bash
-read -r -s -p "Usuario DagsHub (AWS_ACCESS_KEY_ID): " AWS_ACCESS_KEY_ID; printf '\n'; export AWS_ACCESS_KEY_ID
-read -r -s -p "Token DagsHub (AWS_SECRET_ACCESS_KEY): " AWS_SECRET_ACCESS_KEY; printf '\n'; export AWS_SECRET_ACCESS_KEY
+read -r -s -p "Token de acceso DagsHub: " DAGSHUB_TOKEN; printf '\n'
+export AWS_ACCESS_KEY_ID="$DAGSHUB_TOKEN"
+export AWS_SECRET_ACCESS_KEY="$DAGSHUB_TOKEN"
+unset DAGSHUB_TOKEN
 # Solo si el repositorio de Hugging Face es privado:
 read -r -s -p "Token Hugging Face (HF_TOKEN): " HF_TOKEN; printf '\n'; export HF_TOKEN
 ```
