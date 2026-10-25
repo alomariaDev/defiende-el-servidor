@@ -1,0 +1,85 @@
+{
+  "purpose": "Baseline fija pre-recuperación; la muestra sale solo de val.csv.",
+  "created_utc": "2026-10-25T19:33:09.810103+00:00",
+  "validation_sample": {
+    "path": "evidencias/recuperacion/muestra-validacion.csv",
+    "rows": 25,
+    "row_ids": [
+      13,
+      19,
+      23,
+      28,
+      30,
+      32,
+      36,
+      37,
+      44,
+      46,
+      48,
+      53,
+      65,
+      77,
+      82,
+      84,
+      86,
+      87,
+      94,
+      97,
+      103,
+      107,
+      116,
+      119,
+      121
+    ],
+    "sha256": "82a6d554fb2c789c57224706e8438dc484a3171a505a728ee2295c859092fa8f",
+    "validation_source": "data/processed/val.csv; primeras 25 filas en orden almacenado"
+  },
+  "data_sha256": {
+    "data/raw/UNSW_NB15_training-set.csv": "bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa",
+    "data/raw/UNSW_NB15_testing-set.csv": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559",
+    "data/processed/train.csv": "a3e8529f58a72c7ad07251e0e9edced1714b8610c25bb7cea3294fdb5e16cd0f",
+    "data/processed/val.csv": "6dc01d121473736aa962d9289e1e5a93ca4396a25075a32cd2f5e86211c36e2b",
+    "data/processed/split_indices.csv": "3aba38d80b2125c9e6c1eb6c4ede8bad59c526cfaba96ad8075414d11a94863f"
+  },
+  "dvc": {
+    "raw_pointer": "data/raw.dvc",
+    "raw_directory_md5": "fe93051ae209ffb0128a31e7a478c009.dir",
+    "processed_pointer": "data/processed.dvc",
+    "processed_directory_md5": "a065edaae55501c53239ceade3a3a8e0.dir"
+  },
+  "versions": {
+    "v1": {
+      "repo_id": "mariisabell/unsw-nb15-detector",
+      "commit_sha": "04f723fe871e9b2f3b10b2ccd88cb2b45f587b53",
+      "threshold": 0.5,
+      "model_sha256": "e0f3019485ecfaa7418c7d4c31b7d130b1c5f003162de5f925d83561b7683dc3",
+      "git_tag": "v1",
+      "git_commit": "c2891e168109f7ab89dec90ce8d188ac687c1539",
+      "mlflow_run_id": "ffdf524d57f749d28b5ed7fceb0fa0bf"
+    },
+    "v2": {
+      "repo_id": "mariisabell/unsw-nb15-detector",
+      "commit_sha": "03e583e00e2c3d5dda0d0eb1fb9364ab1b86c2d6",
+      "threshold": 0.3903680448122325,
+      "model_sha256": "e0f3019485ecfaa7418c7d4c31b7d130b1c5f003162de5f925d83561b7683dc3",
+      "git_tag": "v2",
+      "git_commit": "f83efdcbb4eb75db01b4f27a79ed4a6393cc6e3c",
+      "mlflow_run_id": "ffdf524d57f749d28b5ed7fceb0fa0bf"
+    }
+  },
+  "local_model_sha256": {
+    "v1": "e0f3019485ecfaa7418c7d4c31b7d130b1c5f003162de5f925d83561b7683dc3",
+    "v2": "e0f3019485ecfaa7418c7d4c31b7d130b1c5f003162de5f925d83561b7683dc3"
+  },
+  "baseline_predictions": {
+    "v1": {
+      "path": "evidencias/recuperacion/predicciones-base-v1.csv",
+      "sha256": "50b2fc95e504bb33dcd4990716aa57868418dd1d226c7058ee9c6f0917d7e5c0"
+    },
+    "v2": {
+      "path": "evidencias/recuperacion/predicciones-base-v2.csv",
+      "sha256": "419aac9715339835284d1b361c0f6b6a8d02b515c11fc34ea27575763dc88829"
+    }
+  },
+  "test_policy": "UNSW_NB15_testing-set.csv solo se hashea como bytes; no se parsea ni se accede a sus etiquetas."
+}
