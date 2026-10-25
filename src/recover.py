@@ -184,12 +184,24 @@ def verify(output_dir: Path, expected_commit: str) -> None:
         raise RuntimeError("Los row_id de la muestra cambiaron")
     by_id = validation.set_index("row_id", drop=False)
     selected = by_id.loc[manifest["validation_sample"]["row_ids"], sample.columns].reset_index(drop=True)
-    pd.testing.assert_frame_equal(selected, sample, check_dtype=False, check_exact=True)
+    # CSV decimal round-tripping can differ by one floating-point ULP even
+    # when both files represent the same saved validation row. IDs, labels,
+    # and categorical columns remain exact; numeric values allow <= 1e-15.
+    input_match_tolerance = 1e-15
+    pd.testing.assert_frame_equal(
+        selected,
+        sample,
+        check_dtype=False,
+        check_exact=False,
+        rtol=0,
+        atol=input_match_tolerance,
+    )
 
     refs = manifest["versions"]
     output_hashes = {}
     comparisons = {}
     model_hashes = {}
+    score_match_tolerance = 1e-12
     for version in ("v1", "v2"):
         ref = refs[version]
         root = Path(snapshot_download(
@@ -230,6 +242,8 @@ def verify(output_dir: Path, expected_commit: str) -> None:
             "y_true_equal": before["y_true"].tolist() == result["y_true"].tolist(),
             "predictions_equal": labels_equal,
             "max_abs_score_difference": max_abs,
+            "scores_within_tolerance": max_abs <= score_match_tolerance,
+            "score_match_absolute_tolerance": score_match_tolerance,
             "baseline_sha256": baseline_hash,
             "recovered_sha256": output_hashes[str(output_path.relative_to(ROOT))],
             "loaded_pipeline_steps": list(model.named_steps),
@@ -238,7 +252,10 @@ def verify(output_dir: Path, expected_commit: str) -> None:
 
     result = {
         "status": "passed" if all(
-            item["row_ids_equal"] and item["y_true_equal"] and item["predictions_equal"]
+            item["row_ids_equal"]
+            and item["y_true_equal"]
+            and item["predictions_equal"]
+            and item["scores_within_tolerance"]
             for item in comparisons.values()
         ) else "failed_prediction_comparison",
         "recovery_checkout_commit": actual_commit,
@@ -248,6 +265,7 @@ def verify(output_dir: Path, expected_commit: str) -> None:
         "verified_data_sha256": actual_data_hashes,
         "downloaded_model_sha256": model_hashes,
         "versions": comparisons,
+        "validation_input_match_absolute_tolerance": input_match_tolerance,
         "test_labels_used": False,
         "test_file_sha256_only": actual_data_hashes["data/raw/UNSW_NB15_testing-set.csv"],
     }
