@@ -3,3 +3,5 @@
 ['remote "dagshub"']
     url = s3://dvc
     endpointurl = https://dagshub.com/alomariaDev/defiende-el-servidor.s3
+['remote "dagshub-public"']
+    url = https://dagshub.com/alomariaDev/defiende-el-servidor.dvc

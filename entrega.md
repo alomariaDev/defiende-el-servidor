@@ -5,7 +5,7 @@
 - Autora: Maria Isabell Guzman
 - Correo Git: `182182664+alomariaDev@users.noreply.github.com`
 - GitHub: <https://github.com/alomariaDev/defiende-el-servidor>
-- Remote DVC: DagsHub, `s3://dvc` con endpoint `https://dagshub.com/alomariaDev/defiende-el-servidor.s3`; autenticación por variables `AWS_ACCESS_KEY_ID` y `AWS_SECRET_ACCESS_KEY`.
+- Remote DVC: DagsHub HTTPS `https://dagshub.com/alomariaDev/defiende-el-servidor.dvc`; también está configurado el remote S3 `s3://dvc` con endpoint `https://dagshub.com/alomariaDev/defiende-el-servidor.s3`. Son almacenes DVC separados. La prueba de recuperación autenticada del remote HTTPS y el estado de lectura anónima están documentados abajo en “Acceso a DVC desde DagsHub”.
 - Hugging Face: <https://huggingface.co/mariisabell/unsw-nb15-detector>
 - Entorno registrado: Python 3.14.4, CPU. Paquetes directos fijados en `requirements.txt` (incluye scikit-learn 1.9.1, MLflow 3.17.2, DVC 3.67.1 y huggingface_hub 2.2.0).
 
@@ -52,6 +52,24 @@ Los cuatro registros reportan código fuente en Git `c2891e168109f7ab89dec90ce8d
 La prueba exitosa se ejecutó en checkout nuevo `ec8b14923f3a5539250030045b47793c8637d4f8`; verificó los SHA-256 de los dos datos originales y tres archivos preparados, descargó v1/v2 por SHA de Hub y cargó `preprocessor` y `estimator`. Sobre la misma muestra fija de 25 filas de validación coincidieron row_id, y_true y y_pred. Diferencia absoluta máxima de score para ambos modelos: `2.220446049250313e-16` (tolerancia `1e-12`).
 
 Archivos de la ejecución: `evidencias/recuperacion/run-20261025T195751Z/commands.log`, `comparacion.json`, `hashes.json`, y `predicciones-recuperadas-v1.csv`/`v2.csv`; baseline y muestra en la raíz de `evidencias/recuperacion/`. SHA-256 del log `792671abbdd5df3d68548568c244db0cec7666bd7e925d91515a4a8de67488cc`; comparación `0a88b8e505fcfea48450ae63e229c5a1c736ae5c2a99a41f4f247f95e49d9c06`.
+
+## Acceso a DVC desde DagsHub
+
+La autora informa que el repositorio de DagsHub está configurado como público. En un clon limpio sin credenciales, `dvc pull -r dagshub-public data/raw.dvc data/processed.dvc` no pudo leer los objetos: faltan los hashes de directorio `fe93051ae209ffb0128a31e7a478c009.dir` y `a065edaae55501c53239ceade3a3a8e0.dir`; las solicitudes HTTP anónimas a ambos objetos devolvieron 404. El acceso S3 sin credenciales devolvió 401. Por tanto, esta entrega no afirma que el `dvc pull` anónimo haya funcionado.
+
+En un clon temporal nuevo, `dvc fetch --verbose -r dagshub-public data/raw.dvc data/processed.dvc` solicitó autenticación básica de DagsHub y terminó con `7 files fetched`. Después, `dvc checkout` materializó los datos en ese clon y los SHA-256 de los dos CSV originales, `train.csv`, `val.csv` y `split_indices.csv` coincidieron con los valores de la sección de datos. El log sanitizado y la salida de verificación están en `evidencias/recuperacion/dagshub-remote-check.txt`.
+
+Para que el docente recupere los datos sin usar las credenciales de la autora, debe configurar el remote HTTPS en un clon y autenticarse con su propio token de DagsHub (no se incluye ningún token en Git):
+
+```bash
+dvc remote add --local dagshub-public https://dagshub.com/alomariaDev/defiende-el-servidor.dvc
+dvc remote modify --local dagshub-public auth basic
+dvc remote modify --local dagshub-public user alomariaDev
+dvc remote modify --local dagshub-public ask_password true
+dvc pull -r dagshub-public data/raw.dvc data/processed.dvc
+```
+
+El comando solicita el token como contraseña de forma interactiva. La lectura anónima permanece pendiente de resolución/verificación; si el taller exige que no se solicite token al docente, este resultado debe considerarse una limitación del acceso actual.
 
 ## Evaluación final única en test
 

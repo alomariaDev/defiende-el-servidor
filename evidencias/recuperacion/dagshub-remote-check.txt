@@ -1,0 +1,56 @@
+DagsHub DVC remote check — 2026-10-25
+=====================================
+
+Remote HTTPS
+------------
+URL: https://dagshub.com/alomariaDev/defiende-el-servidor.dvc
+
+Anonymous clean-clone attempt:
+  dvc pull -r dagshub-public data/raw.dvc data/processed.dvc
+
+Observed output:
+  WARNING: Some of the cache files do not exist neither locally nor on remote.
+  Missing cache files:
+  md5: fe93051ae209ffb0128a31e7a478c009.dir
+  md5: a065edaae55501c53239ceade3a3a8e0.dir
+  ERROR: failed to pull data from the cloud
+
+Unauthenticated HTTP HEAD checks against the two object URLs returned:
+  raw_object_http=404
+  processed_object_http=404
+
+Authenticated fetch in a new clone:
+  dvc fetch --verbose -r dagshub-public data/raw.dvc data/processed.dvc
+
+Observed output included:
+  Preparing to transfer data from
+    https://dagshub.com/alomariaDev/defiende-el-servidor.dvc/files/md5
+  Querying 2 oids via object_exists
+  transfer dir: md5: a065edaae55501c53239ceade3a3a8e0.dir with 3 files
+  transfer dir: md5: fe93051ae209ffb0128a31e7a478c009.dir with 2 files
+  7 files fetched
+
+The command prompted for HTTP Basic authentication. The password was entered
+interactively and was not echoed in the terminal output or copied into this
+evidence file.
+
+After dvc checkout in that temporary clone, SHA-256 verification printed:
+  data/raw/UNSW_NB15_training-set.csv: bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa OK
+  data/raw/UNSW_NB15_testing-set.csv: 734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559 OK
+  data/processed/train.csv: a3e8529f58a72c7ad07251e0e9edced1714b8610c25bb7cea3294fdb5e16cd0f OK
+  data/processed/val.csv: 6dc01d121473736aa962d9289e1e5a93ca4396a25075a32cd2f5e86211c36e2b OK
+  data/processed/split_indices.csv: 3aba38d80b2125c9e6c1eb6c4ede8bad59c526cfaba96ad8075414d11a94863f OK
+
+S3 anonymous check
+------------------
+Remote: s3://dvc
+Endpoint: https://dagshub.com/alomariaDev/defiende-el-servidor.s3
+With allow_anonymous_login enabled and no AWS credential variables:
+  ERROR: ... 401 ... Unauthorized
+
+Conclusion
+----------
+The DVC objects are recoverable from the HTTPS remote with DagsHub Basic
+authentication, and the recovered files match the recorded SHA-256 values.
+Anonymous DVC/S3 recovery was attempted and failed; this evidence does not
+claim that anonymous access works.
