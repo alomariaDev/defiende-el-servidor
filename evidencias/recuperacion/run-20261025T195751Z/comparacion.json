@@ -1,0 +1,63 @@
+{
+  "status": "passed",
+  "recovery_checkout_commit": "ec8b14923f3a5539250030045b47793c8637d4f8",
+  "frozen_model_git_commit_v2": "f83efdcbb4eb75db01b4f27a79ed4a6393cc6e3c",
+  "created_utc": "2026-10-25T20:00:31.153577+00:00",
+  "dvc_pointer_hashes": {
+    "raw_directory_md5": "fe93051ae209ffb0128a31e7a478c009.dir",
+    "processed_directory_md5": "a065edaae55501c53239ceade3a3a8e0.dir"
+  },
+  "verified_data_sha256": {
+    "data/raw/UNSW_NB15_training-set.csv": "bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa",
+    "data/raw/UNSW_NB15_testing-set.csv": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559",
+    "data/processed/train.csv": "a3e8529f58a72c7ad07251e0e9edced1714b8610c25bb7cea3294fdb5e16cd0f",
+    "data/processed/val.csv": "6dc01d121473736aa962d9289e1e5a93ca4396a25075a32cd2f5e86211c36e2b",
+    "data/processed/split_indices.csv": "3aba38d80b2125c9e6c1eb6c4ede8bad59c526cfaba96ad8075414d11a94863f"
+  },
+  "downloaded_model_sha256": {
+    "v1": "e0f3019485ecfaa7418c7d4c31b7d130b1c5f003162de5f925d83561b7683dc3",
+    "v2": "e0f3019485ecfaa7418c7d4c31b7d130b1c5f003162de5f925d83561b7683dc3"
+  },
+  "versions": {
+    "v1": {
+      "baseline_path": "evidencias/recuperacion/predicciones-base-v1.csv",
+      "recovered_path": "evidencias/recuperacion/run-20261025T195751Z/predicciones-recuperadas-v1.csv",
+      "rows_compared": 25,
+      "row_ids_equal": true,
+      "y_true_equal": true,
+      "predictions_equal": true,
+      "max_abs_score_difference": 2.220446049250313e-16,
+      "scores_within_tolerance": true,
+      "score_match_absolute_tolerance": 1e-12,
+      "baseline_sha256": "50b2fc95e504bb33dcd4990716aa57868418dd1d226c7058ee9c6f0917d7e5c0",
+      "recovered_sha256": "64d1226d0a7537366734cbdb20550bf64fb1112a567e72dac2a91c3c55c555e6",
+      "loaded_pipeline_steps": [
+        "preprocessor",
+        "estimator"
+      ],
+      "hub_revision": "04f723fe871e9b2f3b10b2ccd88cb2b45f587b53"
+    },
+    "v2": {
+      "baseline_path": "evidencias/recuperacion/predicciones-base-v2.csv",
+      "recovered_path": "evidencias/recuperacion/run-20261025T195751Z/predicciones-recuperadas-v2.csv",
+      "rows_compared": 25,
+      "row_ids_equal": true,
+      "y_true_equal": true,
+      "predictions_equal": true,
+      "max_abs_score_difference": 2.220446049250313e-16,
+      "scores_within_tolerance": true,
+      "score_match_absolute_tolerance": 1e-12,
+      "baseline_sha256": "419aac9715339835284d1b361c0f6b6a8d02b515c11fc34ea27575763dc88829",
+      "recovered_sha256": "8562223dfbcc48bafe3e4b95bf77ed14b08e310f4a9b0bd48a4e72edd1d1c621",
+      "loaded_pipeline_steps": [
+        "preprocessor",
+        "estimator"
+      ],
+      "hub_revision": "03e583e00e2c3d5dda0d0eb1fb9364ab1b86c2d6"
+    }
+  },
+  "validation_input_match_absolute_tolerance": 1e-12,
+  "validation_input_match_relative_tolerance": 1e-12,
+  "test_labels_used": false,
+  "test_file_sha256_only": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559"
+}

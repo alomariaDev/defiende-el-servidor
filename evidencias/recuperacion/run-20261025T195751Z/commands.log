@@ -1,0 +1,491 @@
+Recovery checkout solicitado: ec8b14923f3a5539250030045b47793c8637d4f8
+Workspace limpio: /tmp/defiende-recovery-20261025T195751Z
+AWS_ACCESS_KEY_ID=present (valor omitido)
+AWS_SECRET_ACCESS_KEY=present (valor omitido)
+HF_TOKEN=absent (solo se necesita si el repo HF es privado)
+$ git clone --no-checkout https://github.com/alomariaDev/defiende-el-servidor.git /tmp/defiende-recovery-20261025T195751Z/repo
+Cloning into '/tmp/defiende-recovery-20261025T195751Z/repo'...
+$ git -C /tmp/defiende-recovery-20261025T195751Z/repo checkout --detach ec8b14923f3a5539250030045b47793c8637d4f8
+HEAD is now at ec8b149 Relax validation CSV round-trip tolerance
+$ python3 -m venv /tmp/defiende-recovery-20261025T195751Z/venv
+$ /tmp/defiende-recovery-20261025T195751Z/venv/bin/python -m pip install --no-cache-dir -r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt
+Collecting numpy==2.5.3 (from -r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 2))
+  Downloading numpy-2.5.3-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Collecting pandas==2.3.3 (from -r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 3))
+  Downloading pandas-2.3.3-cp314-cp314-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (91 kB)
+Collecting scikit-learn==1.9.1 (from -r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 4))
+  Downloading scikit_learn-1.9.1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (9.3 kB)
+Collecting skops==0.16.0 (from -r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 5))
+  Downloading skops-0.16.0-py3-none-any.whl.metadata (4.3 kB)
+Collecting PyYAML==6.0.3 (from -r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 6))
+  Downloading pyyaml-6.0.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Collecting dvc==3.67.1 (from dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading dvc-3.67.1-py3-none-any.whl.metadata (17 kB)
+Collecting huggingface_hub==2.2.0 (from -r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 8))
+  Downloading huggingface_hub-2.2.0-py3-none-any.whl.metadata (16 kB)
+Collecting python-dateutil>=2.8.2 (from pandas==2.3.3->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 3))
+  Downloading python_dateutil-3.0.0-py2.py3-none-any.whl.metadata (8.2 kB)
+Collecting pytz>=2020.1 (from pandas==2.3.3->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 3))
+  Downloading pytz-2026.5-py2.py3-none-any.whl.metadata (22 kB)
+Collecting tzdata>=2022.7 (from pandas==2.3.3->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 3))
+  Downloading tzdata-2026.5-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting scipy>=1.10.0 (from scikit-learn==1.9.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 4))
+  Downloading scipy-1.18.1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (62 kB)
+Collecting joblib>=1.4.0 (from scikit-learn==1.9.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 4))
+  Downloading joblib-1.6.0-py3-none-any.whl.metadata (6.5 kB)
+Collecting narwhals>=2.0.1 (from scikit-learn==1.9.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 4))
+  Downloading narwhals-2.27.1-py3-none-any.whl.metadata (15 kB)
+Collecting threadpoolctl>=3.5.0 (from scikit-learn==1.9.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 4))
+  Downloading threadpoolctl-3.7.0-py3-none-any.whl.metadata (24 kB)
+Collecting packaging>=17.0 (from skops==0.16.0->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 5))
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting prettytable>=3.9 (from skops==0.16.0->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 5))
+  Downloading prettytable-3.18.0-py3-none-any.whl.metadata (37 kB)
+Collecting attrs>=22.2.0 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting celery (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading celery-5.6.3-py3-none-any.whl.metadata (23 kB)
+Collecting colorama>=0.3.9 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+Collecting configobj>=5.0.9 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading configobj-5.0.9-py2.py3-none-any.whl.metadata (3.2 kB)
+Collecting distro>=1.3 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading distro-1.9.0-py3-none-any.whl.metadata (6.8 kB)
+Collecting dpath<3,>=2.1.0 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading dpath-2.2.0-py3-none-any.whl.metadata (15 kB)
+Collecting dulwich (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading dulwich-1.2.19-cp314-cp314-manylinux_2_28_x86_64.whl.metadata (6.1 kB)
+Collecting dvc-data<3.19.0,>=3.18.2 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading dvc_data-3.18.3-py3-none-any.whl.metadata (4.9 kB)
+Collecting dvc-http>=2.29.0 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading dvc_http-2.32.0-py3-none-any.whl.metadata (1.3 kB)
+Collecting dvc-objects (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading dvc_objects-5.2.0-py3-none-any.whl.metadata (3.9 kB)
+Collecting dvc-render<2,>=1.0.1 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading dvc_render-1.0.2-py3-none-any.whl.metadata (5.4 kB)
+Collecting dvc-studio-client<1,>=0.21 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading dvc_studio_client-0.23.0-py3-none-any.whl.metadata (4.4 kB)
+Collecting dvc-task<1,>=0.3.0 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading dvc_task-0.40.2-py3-none-any.whl.metadata (10.0 kB)
+Collecting flatten-dict<1,>=0.4.1 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading flatten_dict-0.5.0-py3-none-any.whl.metadata (8.9 kB)
+Collecting flufl.lock<10,>=8.1.0 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading flufl_lock-9.2.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting fsspec>=2024.2.0 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading fsspec-2026.9.0-py3-none-any.whl.metadata (10 kB)
+Collecting funcy>=1.14 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading funcy-2.1-py3-none-any.whl.metadata (6.3 kB)
+Collecting grandalf<1,>=0.7 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading grandalf-0.8-py3-none-any.whl.metadata (1.7 kB)
+Collecting gto<2,>=1.6.0 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading gto-1.10.1-py3-none-any.whl.metadata (4.8 kB)
+Collecting hydra-core>=1.1 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading hydra_core-1.3.8-py3-none-any.whl.metadata (5.7 kB)
+Collecting iterative-telemetry>=0.0.7 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading iterative_telemetry-0.0.10-py3-none-any.whl.metadata (4.1 kB)
+Collecting kombu (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading kombu-5.6.2-py3-none-any.whl.metadata (3.5 kB)
+Collecting networkx>=2.5 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading networkx-3.7-py3-none-any.whl.metadata (6.7 kB)
+Collecting omegaconf (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading omegaconf-2.4.0-py3-none-any.whl.metadata (4.9 kB)
+Collecting pathspec<2,>=0.10.3 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading pathspec-1.1.1-py3-none-any.whl.metadata (14 kB)
+Collecting platformdirs<5,>=3.1.1 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading platformdirs-4.13.5-py3-none-any.whl.metadata (5.5 kB)
+Collecting psutil>=5.8 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl.metadata (22 kB)
+Collecting pydot>=1.2.4 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading pydot-4.0.1-py3-none-any.whl.metadata (11 kB)
+Collecting pygtrie>=2.3.2 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading pygtrie-2.6.2-py3-none-any.whl.metadata (12 kB)
+Collecting pyparsing>=3.0.0 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading pyparsing-3.3.3-py3-none-any.whl.metadata (5.9 kB)
+Collecting requests>=2.22 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting rich>=12 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading rich-15.0.0-py3-none-any.whl.metadata (18 kB)
+Collecting ruamel.yaml>=0.17.11 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading ruamel_yaml-0.19.1-py3-none-any.whl.metadata (16 kB)
+Collecting scmrepo<4,>=3.5.2 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading scmrepo-3.6.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting shortuuid>=0.5 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading shortuuid-1.0.13-py3-none-any.whl.metadata (5.8 kB)
+Collecting shtab<2,>=1.3.4 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading shtab-1.13.0-py3-none-any.whl.metadata (7.6 kB)
+Collecting tabulate>=0.8.7 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading tabulate-0.10.0-py3-none-any.whl.metadata (40 kB)
+Collecting tomlkit>=0.11.1 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading tomlkit-0.15.2-py3-none-any.whl.metadata (3.4 kB)
+Collecting tqdm<5,>=4.63.1 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading tqdm-4.70.1-py3-none-any.whl.metadata (57 kB)
+Collecting voluptuous>=0.11.7 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading voluptuous-0.16.0-py3-none-any.whl.metadata (20 kB)
+Collecting zc.lockfile>=1.2.1 (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading zc_lockfile-4.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting click<9.0.0,>=8.4.2 (from huggingface_hub==2.2.0->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 8))
+  Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting filelock>=3.10.0 (from huggingface_hub==2.2.0->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 8))
+  Downloading filelock-4.2.4-py3-none-any.whl.metadata (2.0 kB)
+Collecting hf-xet<2.0.0,>=1.6.0 (from huggingface_hub==2.2.0->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 8))
+  Downloading hf_xet-1.7.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (4.9 kB)
+Collecting httpx2<3,>=2.0.0 (from huggingface_hub==2.2.0->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 8))
+  Downloading httpx2-2.16.0-py3-none-any.whl.metadata (10 kB)
+Collecting typing-extensions>=4.1.0 (from huggingface_hub==2.2.0->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 8))
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting dvc-s3<4,>=3.2.1 (from dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading dvc_s3-3.3.0-py3-none-any.whl.metadata (1.6 kB)
+Collecting dictdiffer>=0.8.1 (from dvc-data<3.19.0,>=3.18.2->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading dictdiffer-0.10.0-py3-none-any.whl.metadata (2.9 kB)
+Collecting diskcache>=5.2.1 (from dvc-data<3.19.0,>=3.18.2->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading diskcache-5.6.3-py3-none-any.whl.metadata (20 kB)
+Collecting sqltrie<1,>=0.11.0 (from dvc-data<3.19.0,>=3.18.2->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading sqltrie-0.11.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting orjson<4,>=3 (from dvc-data<3.19.0,>=3.18.2->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading orjson-3.13.0-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (42 kB)
+Collecting s3fs>=2024.12.0 (from dvc-s3<4,>=3.2.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading s3fs-2026.9.0-py3-none-any.whl.metadata (1.2 kB)
+Collecting aiobotocore>=2.5.0 (from dvc-s3<4,>=3.2.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading aiobotocore-3.10.0-py3-none-any.whl.metadata (32 kB)
+Collecting botocore (from dvc-s3<4,>=3.2.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading botocore-1.43.118-py3-none-any.whl.metadata (5.6 kB)
+Collecting billiard<5.0,>=4.2.1 (from celery->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading billiard-4.3.1-py3-none-any.whl.metadata (5.0 kB)
+Collecting vine<6.0,>=5.1.0 (from celery->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading vine-5.1.0-py3-none-any.whl.metadata (2.7 kB)
+Collecting click-didyoumean>=0.3.0 (from celery->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading click_didyoumean-0.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting click-repl>=0.2.0 (from celery->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading click_repl-0.4.1-py3-none-any.whl.metadata (3.7 kB)
+Collecting click-plugins>=1.1.1 (from celery->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading click_plugins-1.1.1.2-py2.py3-none-any.whl.metadata (6.5 kB)
+Collecting tzlocal (from celery->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading tzlocal-5.4.5-py3-none-any.whl.metadata (7.7 kB)
+Collecting atpublic (from flufl.lock<10,>=8.1.0->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading atpublic-9.0.0-py3-none-any.whl.metadata (2.6 kB)
+Collecting entrypoints (from gto<2,>=1.6.0->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading entrypoints-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting pydantic>=2 (from gto<2,>=1.6.0->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading pydantic-2.14.1-py3-none-any.whl.metadata (133 kB)
+Collecting pydantic-settings>=2 (from gto<2,>=1.6.0->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading pydantic_settings-2.16.1-py3-none-any.whl.metadata (4.0 kB)
+Collecting semver>=2.13.0 (from gto<2,>=1.6.0->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading semver-3.1.0-py3-none-any.whl.metadata (6.9 kB)
+Collecting anyio>=4.10 (from httpx2<3,>=2.0.0->huggingface_hub==2.2.0->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 8))
+  Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+Collecting httpcore2==2.16.0 (from httpx2<3,>=2.0.0->huggingface_hub==2.2.0->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 8))
+  Downloading httpcore2-2.16.0-py3-none-any.whl.metadata (27 kB)
+Collecting idna>=3.18 (from httpx2<3,>=2.0.0->huggingface_hub==2.2.0->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 8))
+  Downloading idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting truststore>=0.10 (from httpx2<3,>=2.0.0->huggingface_hub==2.2.0->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 8))
+  Downloading truststore-0.10.5-py3-none-any.whl.metadata (4.5 kB)
+Collecting h11>=0.16 (from httpcore2==2.16.0->httpx2<3,>=2.0.0->huggingface_hub==2.2.0->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 8))
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting amqp<6.0.0,>=5.1.1 (from kombu->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading amqp-5.4.1-py3-none-any.whl.metadata (9.4 kB)
+Collecting gitpython>3 (from scmrepo<4,>=3.5.2->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading gitpython-3.2.1-py3-none-any.whl.metadata (13 kB)
+Collecting pygit2>=1.14.0 (from scmrepo<4,>=3.5.2->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading pygit2-1.20.1-cp314-cp314-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl.metadata (3.7 kB)
+Collecting asyncssh<3,>=2.13.1 (from scmrepo<4,>=3.5.2->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading asyncssh-2.24.1-py3-none-any.whl.metadata (9.8 kB)
+Collecting aiohttp-retry>=2.5.0 (from scmrepo<4,>=3.5.2->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading aiohttp_retry-2.9.1-py3-none-any.whl.metadata (8.8 kB)
+Collecting cryptography>=48.0.1 (from asyncssh<3,>=2.13.1->scmrepo<4,>=3.5.2->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (4.4 kB)
+Collecting urllib3>=2.2.2 (from dulwich->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading urllib3-2.8.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting aiohttp<4.0.0,>=3.14.0 (from aiobotocore>=2.5.0->dvc-s3<4,>=3.2.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading aiohttp-3.14.5-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.3 kB)
+Collecting aioitertools<1.0.0,>=0.5.1 (from aiobotocore>=2.5.0->dvc-s3<4,>=3.2.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading aioitertools-0.13.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting botocore (from dvc-s3<4,>=3.2.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading botocore-1.43.117-py3-none-any.whl.metadata (5.6 kB)
+Collecting jmespath<2.0.0,>=0.7.1 (from aiobotocore>=2.5.0->dvc-s3<4,>=3.2.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading jmespath-1.1.0-py3-none-any.whl.metadata (7.6 kB)
+Collecting multidict<8.0.0,>=6.0.0 (from aiobotocore>=2.5.0->dvc-s3<4,>=3.2.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading multidict-7.2.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (6.1 kB)
+Collecting python-dateutil>=2.8.2 (from pandas==2.3.3->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 3))
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting wrapt<3.0.0,>=1.10.10 (from aiobotocore>=2.5.0->dvc-s3<4,>=3.2.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading wrapt-2.5.1-cp314-cp314-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (7.6 kB)
+Collecting aiohappyeyeballs>=2.5.0 (from aiohttp<4.0.0,>=3.14.0->aiobotocore>=2.5.0->dvc-s3<4,>=3.2.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading aiohappyeyeballs-2.7.1-py3-none-any.whl.metadata (5.9 kB)
+Collecting aiosignal>=1.4.0 (from aiohttp<4.0.0,>=3.14.0->aiobotocore>=2.5.0->dvc-s3<4,>=3.2.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+Collecting frozenlist>=1.1.1 (from aiohttp<4.0.0,>=3.14.0->aiobotocore>=2.5.0->dvc-s3<4,>=3.2.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading frozenlist-1.8.0-cp314-cp314-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (20 kB)
+Collecting propcache>=0.2.0 (from aiohttp<4.0.0,>=3.14.0->aiobotocore>=2.5.0->dvc-s3<4,>=3.2.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading propcache-0.5.4-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (25 kB)
+Collecting yarl<2.0,>=1.25.1 (from aiohttp<4.0.0,>=3.14.0->aiobotocore>=2.5.0->dvc-s3<4,>=3.2.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading yarl-1.25.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (111 kB)
+Collecting six>=1.5 (from python-dateutil>=2.8.2->pandas==2.3.3->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 3))
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting prompt_toolkit>=3.0.36 (from click-repl>=0.2.0->celery->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading prompt_toolkit-3.0.53-py3-none-any.whl.metadata (6.4 kB)
+Collecting cffi>=2.0.0 (from cryptography>=48.0.1->asyncssh<3,>=2.13.1->scmrepo<4,>=3.5.2->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading cffi-2.1.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+Collecting pycparser (from cffi>=2.0.0->cryptography>=48.0.1->asyncssh<3,>=2.13.1->scmrepo<4,>=3.5.2->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading pycparser-3.12-py3-none-any.whl.metadata (9.7 kB)
+Collecting gitdb<5,>=4.0.1 (from gitpython>3->scmrepo<4,>=3.5.2->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading gitdb-4.0.12-py3-none-any.whl.metadata (1.2 kB)
+Collecting smmap<6,>=3.0.1 (from gitdb<5,>=4.0.1->gitpython>3->scmrepo<4,>=3.5.2->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading smmap-5.0.3-py3-none-any.whl.metadata (4.6 kB)
+Collecting omegaconf (from dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading omegaconf-2.3.1-py3-none-any.whl.metadata (4.5 kB)
+Collecting antlr4-python3-runtime==4.9.* (from hydra-core>=1.1->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading antlr4-python3-runtime-4.9.3.tar.gz (117 kB)
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Collecting appdirs (from iterative-telemetry>=0.0.7->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading appdirs-1.4.4-py2.py3-none-any.whl.metadata (9.0 kB)
+Collecting cloudpickle>=3.0 (from joblib>=1.4.0->scikit-learn==1.9.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 4))
+  Downloading cloudpickle-3.1.2-py3-none-any.whl.metadata (7.1 kB)
+Collecting wcwidth>=0.3.5 (from prettytable>=3.9->skops==0.16.0->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 5))
+  Downloading wcwidth-0.9.4-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (23 kB)
+Collecting annotated-types>=0.6.0 (from pydantic>=2->gto<2,>=1.6.0->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.50.1 (from pydantic>=2->gto<2,>=1.6.0->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading pydantic_core-2.50.1-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.5 kB)
+Collecting typing-inspection>=0.4.4 (from pydantic>=2->gto<2,>=1.6.0->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting python-dotenv>=1.2.2 (from pydantic-settings>=2->gto<2,>=1.6.0->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading python_dotenv-1.2.4-py3-none-any.whl.metadata (29 kB)
+Collecting charset_normalizer<4,>=2 (from requests>=2.22->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading charset_normalizer-3.5.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (46 kB)
+Collecting certifi>=2023.5.7 (from requests>=2.22->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading certifi-2026.10.23-py3-none-any.whl.metadata (2.5 kB)
+Collecting markdown-it-py>=2.2.0 (from rich>=12->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading markdown_it_py-4.2.0-py3-none-any.whl.metadata (7.4 kB)
+Collecting pygments<3.0.0,>=2.13.0 (from rich>=12->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading pygments-2.21.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich>=12->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Collecting setuptools (from zc.lockfile>=1.2.1->dvc==3.67.1->dvc[s3]==3.67.1->-r /tmp/defiende-recovery-20261025T195751Z/repo/requirements-recovery.txt (line 7))
+  Downloading setuptools-84.2.1-py3-none-any.whl.metadata (6.6 kB)
+Downloading numpy-2.5.3-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.7/16.7 MB 5.6 MB/s eta 0:00:00
+Downloading pandas-2.3.3-cp314-cp314-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (12.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.3/12.3 MB 2.6 MB/s eta 0:00:00
+Downloading scikit_learn-1.9.1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (9.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.2/9.2 MB 3.3 MB/s eta 0:00:00
+Downloading skops-0.16.0-py3-none-any.whl (148 kB)
+Downloading pyyaml-6.0.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (794 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 794.2/794.2 kB 3.8 MB/s eta 0:00:00
+Downloading dvc-3.67.1-py3-none-any.whl (470 kB)
+Downloading huggingface_hub-2.2.0-py3-none-any.whl (839 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 839.9/839.9 kB 3.6 MB/s eta 0:00:00
+Downloading click-8.5.0-py3-none-any.whl (125 kB)
+Downloading dpath-2.2.0-py3-none-any.whl (17 kB)
+Downloading dvc_data-3.18.3-py3-none-any.whl (79 kB)
+Downloading dvc_objects-5.2.0-py3-none-any.whl (33 kB)
+Downloading dvc_render-1.0.2-py3-none-any.whl (22 kB)
+Downloading dvc_s3-3.3.0-py3-none-any.whl (14 kB)
+Downloading dvc_studio_client-0.23.0-py3-none-any.whl (16 kB)
+Downloading dvc_task-0.40.2-py3-none-any.whl (21 kB)
+Downloading celery-5.6.3-py3-none-any.whl (451 kB)
+Downloading billiard-4.3.1-py3-none-any.whl (90 kB)
+Downloading flatten_dict-0.5.0-py3-none-any.whl (9.9 kB)
+Downloading flufl_lock-9.2.0-py3-none-any.whl (11 kB)
+Downloading grandalf-0.8-py3-none-any.whl (41 kB)
+Downloading gto-1.10.1-py3-none-any.whl (45 kB)
+Downloading hf_xet-1.7.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.2/4.2 MB 3.8 MB/s eta 0:00:00
+Downloading httpx2-2.16.0-py3-none-any.whl (97 kB)
+Downloading httpcore2-2.16.0-py3-none-any.whl (85 kB)
+Downloading kombu-5.6.2-py3-none-any.whl (214 kB)
+Downloading vine-5.1.0-py3-none-any.whl (9.6 kB)
+Downloading amqp-5.4.1-py3-none-any.whl (51 kB)
+Downloading orjson-3.13.0-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (130 kB)
+Downloading pathspec-1.1.1-py3-none-any.whl (57 kB)
+Downloading platformdirs-4.13.5-py3-none-any.whl (32 kB)
+Downloading scmrepo-3.6.2-py3-none-any.whl (74 kB)
+Downloading asyncssh-2.24.1-py3-none-any.whl (382 kB)
+Downloading dulwich-1.2.19-cp314-cp314-manylinux_2_28_x86_64.whl (1.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.5/1.5 MB 4.5 MB/s eta 0:00:00
+Downloading shtab-1.13.0-py3-none-any.whl (22 kB)
+Downloading sqltrie-0.11.3-py3-none-any.whl (17 kB)
+Downloading tqdm-4.70.1-py3-none-any.whl (80 kB)
+Downloading aiobotocore-3.10.0-py3-none-any.whl (102 kB)
+Downloading aiohttp-3.14.5-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.9/1.9 MB 4.5 MB/s eta 0:00:00
+Downloading aioitertools-0.13.0-py3-none-any.whl (24 kB)
+Downloading botocore-1.43.117-py3-none-any.whl (16.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.1/16.1 MB 4.7 MB/s eta 0:00:00
+Downloading jmespath-1.1.0-py3-none-any.whl (20 kB)
+Downloading multidict-7.2.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (506 kB)
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Downloading urllib3-2.8.0-py3-none-any.whl (135 kB)
+Downloading wrapt-2.5.1-cp314-cp314-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (251 kB)
+Downloading yarl-1.25.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (117 kB)
+Downloading aiohappyeyeballs-2.7.1-py3-none-any.whl (15 kB)
+Downloading aiohttp_retry-2.9.1-py3-none-any.whl (10.0 kB)
+Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+Downloading click_didyoumean-0.3.1-py3-none-any.whl (3.6 kB)
+Downloading click_plugins-1.1.1.2-py2.py3-none-any.whl (11 kB)
+Downloading click_repl-0.4.1-py3-none-any.whl (14 kB)
+Downloading colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Downloading configobj-5.0.9-py2.py3-none-any.whl (35 kB)
+Downloading cryptography-50.0.2-cp311-abi3-manylinux_2_34_x86_64.whl (4.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.8/4.8 MB 5.0 MB/s eta 0:00:00
+Downloading cffi-2.1.1-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+Downloading dictdiffer-0.10.0-py3-none-any.whl (16 kB)
+Downloading diskcache-5.6.3-py3-none-any.whl (45 kB)
+Downloading distro-1.9.0-py3-none-any.whl (20 kB)
+Downloading dvc_http-2.32.0-py3-none-any.whl (12 kB)
+Downloading filelock-4.2.4-py3-none-any.whl (162 kB)
+Downloading frozenlist-1.8.0-cp314-cp314-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (231 kB)
+Downloading fsspec-2026.9.0-py3-none-any.whl (221 kB)
+Downloading funcy-2.1-py3-none-any.whl (29 kB)
+Downloading gitpython-3.2.1-py3-none-any.whl (231 kB)
+Downloading gitdb-4.0.12-py3-none-any.whl (62 kB)
+Downloading smmap-5.0.3-py3-none-any.whl (24 kB)
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading hydra_core-1.3.8-py3-none-any.whl (168 kB)
+Downloading omegaconf-2.3.1-py3-none-any.whl (79 kB)
+Downloading idna-3.20-py3-none-any.whl (69 kB)
+Downloading iterative_telemetry-0.0.10-py3-none-any.whl (10 kB)
+Downloading joblib-1.6.0-py3-none-any.whl (306 kB)
+Downloading cloudpickle-3.1.2-py3-none-any.whl (22 kB)
+Downloading narwhals-2.27.1-py3-none-any.whl (483 kB)
+Downloading networkx-3.7-py3-none-any.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 1.7 MB/s eta 0:00:00
+Downloading packaging-26.3-py3-none-any.whl (129 kB)
+Downloading prettytable-3.18.0-py3-none-any.whl (37 kB)
+Downloading prompt_toolkit-3.0.53-py3-none-any.whl (392 kB)
+Downloading propcache-0.5.4-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (232 kB)
+Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl (155 kB)
+Downloading pydantic-2.14.1-py3-none-any.whl (488 kB)
+Downloading pydantic_core-2.50.1-cp314-cp314-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 1.6 MB/s eta 0:00:00
+Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Downloading pydantic_settings-2.16.1-py3-none-any.whl (80 kB)
+Downloading pydot-4.0.1-py3-none-any.whl (37 kB)
+Downloading pygit2-1.20.1-cp314-cp314-manylinux_2_26_x86_64.manylinux_2_28_x86_64.whl (5.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.8/5.8 MB 1.7 MB/s eta 0:00:00
+Downloading pygtrie-2.6.2-py3-none-any.whl (33 kB)
+Downloading pyparsing-3.3.3-py3-none-any.whl (126 kB)
+Downloading python_dotenv-1.2.4-py3-none-any.whl (23 kB)
+Downloading pytz-2026.5-py2.py3-none-any.whl (506 kB)
+Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+Downloading charset_normalizer-3.5.2-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (255 kB)
+Downloading certifi-2026.10.23-py3-none-any.whl (135 kB)
+Downloading rich-15.0.0-py3-none-any.whl (310 kB)
+Downloading pygments-2.21.0-py3-none-any.whl (1.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.3/1.3 MB 1.9 MB/s eta 0:00:00
+Downloading markdown_it_py-4.2.0-py3-none-any.whl (91 kB)
+Downloading mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Downloading ruamel_yaml-0.19.1-py3-none-any.whl (118 kB)
+Downloading s3fs-2026.9.0-py3-none-any.whl (33 kB)
+Downloading scipy-1.18.1-cp314-cp314-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (35.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 35.3/35.3 MB 1.8 MB/s eta 0:00:00
+Downloading semver-3.1.0-py3-none-any.whl (18 kB)
+Downloading shortuuid-1.0.13-py3-none-any.whl (10 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading tabulate-0.10.0-py3-none-any.whl (39 kB)
+Downloading threadpoolctl-3.7.0-py3-none-any.whl (26 kB)
+Downloading tomlkit-0.15.2-py3-none-any.whl (52 kB)
+Downloading truststore-0.10.5-py3-none-any.whl (19 kB)
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+Downloading tzdata-2026.5-py2.py3-none-any.whl (347 kB)
+Downloading voluptuous-0.16.0-py3-none-any.whl (31 kB)
+Downloading wcwidth-0.9.4-cp310-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (785 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 785.9/785.9 kB 1.4 MB/s eta 0:00:00
+Downloading zc_lockfile-4.0-py3-none-any.whl (9.1 kB)
+Downloading appdirs-1.4.4-py2.py3-none-any.whl (9.6 kB)
+Downloading atpublic-9.0.0-py3-none-any.whl (11 kB)
+Downloading entrypoints-0.4.2-py3-none-any.whl (5.3 kB)
+Downloading pycparser-3.12-py3-none-any.whl (62 kB)
+Downloading setuptools-84.2.1-py3-none-any.whl (876 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 876.3/876.3 kB 1.3 MB/s eta 0:00:00
+Downloading tzlocal-5.4.5-py3-none-any.whl (18 kB)
+Building wheels for collected packages: antlr4-python3-runtime
+  Building wheel for antlr4-python3-runtime (pyproject.toml): started
+  Building wheel for antlr4-python3-runtime (pyproject.toml): finished with status 'done'
+  Created wheel for antlr4-python3-runtime: filename=antlr4_python3_runtime-4.9.3-py3-none-any.whl size=144590 sha256=c3d73ad9e8c96f5bd722b7d8d56c9e846e3bfcb57f60d6d326f2c98295349c90
+  Stored in directory: /tmp/pip-ephem-wheel-cache-t08734sw/wheels/ea/ca/a6/5ad163e6c66e23b25d4e6a81dba06bce77047ef6257d643728
+Successfully built antlr4-python3-runtime
+Installing collected packages: pytz, funcy, appdirs, antlr4-python3-runtime, wrapt, wcwidth, voluptuous, vine, urllib3, tzlocal, tzdata, typing-extensions, truststore, tqdm, tomlkit, threadpoolctl, tabulate, smmap, six, shtab, shortuuid, setuptools, semver, ruamel.yaml, PyYAML, python-dotenv, pyparsing, pygtrie, pygments, pycparser, psutil, propcache, platformdirs, pathspec, packaging, orjson, numpy, networkx, narwhals, multidict, mdurl, jmespath, idna, hf-xet, h11, fsspec, frozenlist, flatten-dict, filelock, entrypoints, dvc-render, dpath, distro, diskcache, dictdiffer, configobj, colorama, cloudpickle, click, charset_normalizer, certifi, billiard, attrs, atpublic, annotated-types, aioitertools, aiohappyeyeballs, zc.lockfile, yarl, typing-inspection, sqltrie, scipy, requests, python-dateutil, pydot, pydantic-core, prompt_toolkit, prettytable, omegaconf, markdown-it-py, joblib, httpcore2, grandalf, gitdb, flufl.lock, dvc-objects, dulwich, click-plugins, click-didyoumean, cffi, anyio, amqp, aiosignal, scikit-learn, rich, pygit2, pydantic, pandas, kombu, iterative-telemetry, hydra-core, httpx2, gitpython, dvc-studio-client, dvc-data, cryptography, click-repl, botocore, aiohttp, skops, pydantic-settings, huggingface_hub, celery, asyncssh, aiohttp-retry, aiobotocore, scmrepo, s3fs, dvc-task, dvc-http, gto, dvc, dvc-s3
+
+Successfully installed PyYAML-6.0.3 aiobotocore-3.10.0 aiohappyeyeballs-2.7.1 aiohttp-3.14.5 aiohttp-retry-2.9.1 aioitertools-0.13.0 aiosignal-1.4.0 amqp-5.4.1 annotated-types-0.8.0 antlr4-python3-runtime-4.9.3 anyio-4.15.1 appdirs-1.4.4 asyncssh-2.24.1 atpublic-9.0.0 attrs-26.1.0 billiard-4.3.1 botocore-1.43.117 celery-5.6.3 certifi-2026.10.23 cffi-2.1.1 charset_normalizer-3.5.2 click-8.5.0 click-didyoumean-0.3.1 click-plugins-1.1.1.2 click-repl-0.4.1 cloudpickle-3.1.2 colorama-0.4.6 configobj-5.0.9 cryptography-50.0.2 dictdiffer-0.10.0 diskcache-5.6.3 distro-1.9.0 dpath-2.2.0 dulwich-1.2.19 dvc-3.67.1 dvc-data-3.18.3 dvc-http-2.32.0 dvc-objects-5.2.0 dvc-render-1.0.2 dvc-s3-3.3.0 dvc-studio-client-0.23.0 dvc-task-0.40.2 entrypoints-0.4.2 filelock-4.2.4 flatten-dict-0.5.0 flufl.lock-9.2.0 frozenlist-1.8.0 fsspec-2026.9.0 funcy-2.1 gitdb-4.0.12 gitpython-3.2.1 grandalf-0.8 gto-1.10.1 h11-0.16.0 hf-xet-1.7.0 httpcore2-2.16.0 httpx2-2.16.0 huggingface_hub-2.2.0 hydra-core-1.3.8 idna-3.20 iterative-telemetry-0.0.10 jmespath-1.1.0 joblib-1.6.0 kombu-5.6.2 markdown-it-py-4.2.0 mdurl-0.1.2 multidict-7.2.1 narwhals-2.27.1 networkx-3.7 numpy-2.5.3 omegaconf-2.3.1 orjson-3.13.0 packaging-26.3 pandas-2.3.3 pathspec-1.1.1 platformdirs-4.13.5 prettytable-3.18.0 prompt_toolkit-3.0.53 propcache-0.5.4 psutil-7.2.2 pycparser-3.12 pydantic-2.14.1 pydantic-core-2.50.1 pydantic-settings-2.16.1 pydot-4.0.1 pygit2-1.20.1 pygments-2.21.0 pygtrie-2.6.2 pyparsing-3.3.3 python-dateutil-2.9.0.post0 python-dotenv-1.2.4 pytz-2026.5 requests-2.34.2 rich-15.0.0 ruamel.yaml-0.19.1 s3fs-2026.9.0 scikit-learn-1.9.1 scipy-1.18.1 scmrepo-3.6.2 semver-3.1.0 setuptools-84.2.1 shortuuid-1.0.13 shtab-1.13.0 six-1.17.0 skops-0.16.0 smmap-5.0.3 sqltrie-0.11.3 tabulate-0.10.0 threadpoolctl-3.7.0 tomlkit-0.15.2 tqdm-4.70.1 truststore-0.10.5 typing-extensions-4.16.0 typing-inspection-0.4.4 tzdata-2026.5 tzlocal-5.4.5 urllib3-2.8.0 vine-5.1.0 voluptuous-0.16.0 wcwidth-0.9.4 wrapt-2.5.1 yarl-1.25.1 zc.lockfile-4.0
+$ /tmp/defiende-recovery-20261025T195751Z/venv/bin/dvc --cd /tmp/defiende-recovery-20261025T195751Z/repo config --local cache.dir /tmp/defiende-recovery-20261025T195751Z/dvc-cache
+$ /tmp/defiende-recovery-20261025T195751Z/venv/bin/dvc --cd /tmp/defiende-recovery-20261025T195751Z/repo pull data/raw.dvc data/processed.dvc
+A       data/processed/
+A       data/raw/
+7 files fetched and 5 files added
+HF_HOME=/tmp/defiende-recovery-20261025T195751Z/hf-home (directorio nuevo; el valor del token nunca se registra)
+$ /tmp/defiende-recovery-20261025T195751Z/venv/bin/python /tmp/defiende-recovery-20261025T195751Z/repo/src/recover.py verify --output-dir /tmp/defiende-recovery-20261025T195751Z/repo/evidencias/recuperacion/run-20261025T195751Z --expected-commit ec8b14923f3a5539250030045b47793c8637d4f8
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Fetching 11 files:   9%|▉         | 1/11 [00:00<00:03,  2.62it/s]Fetching 11 files:  55%|█████▍    | 6/11 [00:00<00:00, 15.48it/s]Fetching 11 files:  91%|█████████ | 10/11 [00:00<00:00, 15.92it/s]Fetching 11 files: 100%|██████████| 11/11 [00:01<00:00,  6.85it/s]
+Fetching 11 files:   0%|          | 0/11 [00:00<?, ?it/s]Fetching 11 files:  18%|█▊        | 2/11 [00:00<00:00,  9.59it/s]Fetching 11 files:  73%|███████▎  | 8/11 [00:00<00:00, 28.49it/s]Fetching 11 files: 100%|██████████| 11/11 [00:00<00:00, 23.61it/s]
+{
+  "status": "passed",
+  "recovery_checkout_commit": "ec8b14923f3a5539250030045b47793c8637d4f8",
+  "frozen_model_git_commit_v2": "f83efdcbb4eb75db01b4f27a79ed4a6393cc6e3c",
+  "created_utc": "2026-10-25T20:00:31.153577+00:00",
+  "dvc_pointer_hashes": {
+    "raw_directory_md5": "fe93051ae209ffb0128a31e7a478c009.dir",
+    "processed_directory_md5": "a065edaae55501c53239ceade3a3a8e0.dir"
+  },
+  "verified_data_sha256": {
+    "data/raw/UNSW_NB15_training-set.csv": "bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa",
+    "data/raw/UNSW_NB15_testing-set.csv": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559",
+    "data/processed/train.csv": "a3e8529f58a72c7ad07251e0e9edced1714b8610c25bb7cea3294fdb5e16cd0f",
+    "data/processed/val.csv": "6dc01d121473736aa962d9289e1e5a93ca4396a25075a32cd2f5e86211c36e2b",
+    "data/processed/split_indices.csv": "3aba38d80b2125c9e6c1eb6c4ede8bad59c526cfaba96ad8075414d11a94863f"
+  },
+  "downloaded_model_sha256": {
+    "v1": "e0f3019485ecfaa7418c7d4c31b7d130b1c5f003162de5f925d83561b7683dc3",
+    "v2": "e0f3019485ecfaa7418c7d4c31b7d130b1c5f003162de5f925d83561b7683dc3"
+  },
+  "versions": {
+    "v1": {
+      "baseline_path": "evidencias/recuperacion/predicciones-base-v1.csv",
+      "recovered_path": "evidencias/recuperacion/run-20261025T195751Z/predicciones-recuperadas-v1.csv",
+      "rows_compared": 25,
+      "row_ids_equal": true,
+      "y_true_equal": true,
+      "predictions_equal": true,
+      "max_abs_score_difference": 2.220446049250313e-16,
+      "scores_within_tolerance": true,
+      "score_match_absolute_tolerance": 1e-12,
+      "baseline_sha256": "50b2fc95e504bb33dcd4990716aa57868418dd1d226c7058ee9c6f0917d7e5c0",
+      "recovered_sha256": "64d1226d0a7537366734cbdb20550bf64fb1112a567e72dac2a91c3c55c555e6",
+      "loaded_pipeline_steps": [
+        "preprocessor",
+        "estimator"
+      ],
+      "hub_revision": "04f723fe871e9b2f3b10b2ccd88cb2b45f587b53"
+    },
+    "v2": {
+      "baseline_path": "evidencias/recuperacion/predicciones-base-v2.csv",
+      "recovered_path": "evidencias/recuperacion/run-20261025T195751Z/predicciones-recuperadas-v2.csv",
+      "rows_compared": 25,
+      "row_ids_equal": true,
+      "y_true_equal": true,
+      "predictions_equal": true,
+      "max_abs_score_difference": 2.220446049250313e-16,
+      "scores_within_tolerance": true,
+      "score_match_absolute_tolerance": 1e-12,
+      "baseline_sha256": "419aac9715339835284d1b361c0f6b6a8d02b515c11fc34ea27575763dc88829",
+      "recovered_sha256": "8562223dfbcc48bafe3e4b95bf77ed14b08e310f4a9b0bd48a4e72edd1d1c621",
+      "loaded_pipeline_steps": [
+        "preprocessor",
+        "estimator"
+      ],
+      "hub_revision": "03e583e00e2c3d5dda0d0eb1fb9364ab1b86c2d6"
+    }
+  },
+  "validation_input_match_absolute_tolerance": 1e-12,
+  "validation_input_match_relative_tolerance": 1e-12,
+  "test_labels_used": false,
+  "test_file_sha256_only": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559"
+}
+Evidencias de recuperación: /tmp/defiende-recovery-20261025T195751Z/repo/evidencias/recuperacion/run-20261025T195751Z

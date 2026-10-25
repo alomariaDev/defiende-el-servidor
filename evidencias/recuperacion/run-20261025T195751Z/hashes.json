@@ -1,0 +1,19 @@
+{
+  "manifest_sha256": "f45151ccb147410ef1f1b2039e17ffbe0ff89262045e98ab49d661b79bc77ca2",
+  "validation_sample_sha256": "82a6d554fb2c789c57224706e8438dc484a3171a505a728ee2295c859092fa8f",
+  "verified_data_sha256": {
+    "data/raw/UNSW_NB15_training-set.csv": "bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa",
+    "data/raw/UNSW_NB15_testing-set.csv": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559",
+    "data/processed/train.csv": "a3e8529f58a72c7ad07251e0e9edced1714b8610c25bb7cea3294fdb5e16cd0f",
+    "data/processed/val.csv": "6dc01d121473736aa962d9289e1e5a93ca4396a25075a32cd2f5e86211c36e2b",
+    "data/processed/split_indices.csv": "3aba38d80b2125c9e6c1eb6c4ede8bad59c526cfaba96ad8075414d11a94863f"
+  },
+  "downloaded_model_sha256": {
+    "v1": "e0f3019485ecfaa7418c7d4c31b7d130b1c5f003162de5f925d83561b7683dc3",
+    "v2": "e0f3019485ecfaa7418c7d4c31b7d130b1c5f003162de5f925d83561b7683dc3"
+  },
+  "recovered_prediction_sha256": {
+    "evidencias/recuperacion/run-20261025T195751Z/predicciones-recuperadas-v1.csv": "64d1226d0a7537366734cbdb20550bf64fb1112a567e72dac2a91c3c55c555e6",
+    "evidencias/recuperacion/run-20261025T195751Z/predicciones-recuperadas-v2.csv": "8562223dfbcc48bafe3e4b95bf77ed14b08e310f4a9b0bd48a4e72edd1d1c621"
+  }
+}
