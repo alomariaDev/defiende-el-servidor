@@ -29,15 +29,21 @@ Para un clone nuevo también puedes comprobar los objetos con `dvc status -c`. L
 
 ### Recuperar desde el ZIP de backup DVC
 
-El archivo `dvc-backup.zip` se distribuye aparte del repositorio porque contiene una copia local del cache DVC y no está guardado en Git. Coloca el ZIP en la carpeta padre del clon del repositorio. Desde la raíz del repo, descomprímelo y configura el remote local:
+El archivo `dvc-backup.zip` se distribuye aparte del ZIP del proyecto porque contiene una copia del cache DVC y no está guardado en Git. Descárgalo desde [OneDrive](https://uexternadoedu-my.sharepoint.com/:u:/r/personal/maria_guzman17_est_uexternado_edu_co/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Fmaria%5Fguzman17%5Fest%5Fuexternado%5Fedu%5Fco%2FDocuments%2Fdvc%2Dbackup%2Ezip&parent=%2Fpersonal%2Fmaria%5Fguzman17%5Fest%5Fuexternado%5Fedu%5Fco%2FDocuments&share=cQrgaC5wUcuRRbzof4SjAgpiEgUC2Kp79Qm4FGZZ%5FPrzUSHEJg) y guárdalo en una carpeta de recuperación vacía. DagsHub requiere un token para este remote; el enlace de OneDrive es la vía de respaldo sin credenciales DagsHub.
+
+Desde esa carpeta vacía, descarga el ZIP del proyecto o clona el repositorio, y después ejecuta estos comandos desde la raíz del clon. Se asume que `dvc-backup.zip` está en la carpeta padre del clon:
 
 ```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 python -m zipfile -e ../dvc-backup.zip ..
 dvc remote add --local backup ../dvc-backup
 dvc pull -r backup data/raw.dvc data/processed.dvc
+sha256sum data/raw/UNSW_NB15_training-set.csv data/raw/UNSW_NB15_testing-set.csv
 ```
 
-La configuración se guarda solo en `.dvc/config.local`. Si el ZIP está en otra ubicación, ajusta la ruta del archivo al extraerlo y la ruta del directorio en `dvc remote add`.
+Los SHA-256 esperados de los datos originales son `bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa` (training) y `734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559` (testing). La configuración se guarda solo en `.dvc/config.local`. Si el ZIP está en otra ubicación, ajusta las rutas de extracción y del remote.
 
 ## Ejecutar un experimento
 

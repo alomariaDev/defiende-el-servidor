@@ -1,0 +1,21 @@
+Comprobación del enlace OneDrive para dvc-backup.zip
+
+El usuario informó que abrió el enlace en una ventana de incógnito. Esa
+comprobación manual no se observó directamente en esta sesión.
+
+Pruebas automatizadas sin cookies ni credenciales:
+- La herramienta web no pudo abrir el formato de URL de SharePoint.
+- urllib con el enlace compartido terminó con HTTPError 302 y mensaje de
+  redirección repetida.
+- Añadir download=1 al enlace compartido terminó igualmente con HTTPError 302
+  y mensaje de redirección repetida.
+- Microsoft Graph /shares/.../driveItem/content devolvió HTTP 401.
+- La ruta directa del archivo con download=1 devolvió HTTP 200, pero el tipo
+  fue text/html; charset=utf-8, Content-Disposition ausente, 60.055 bytes y
+  firma 0d0a0d0a (no ZIP). El título de la página fue "Sign in to your account".
+
+Resultado: desde este entorno no se obtuvo dvc-backup.zip descargándolo por
+el enlace. Por ello, aquí no se pudo ejecutar la recuperación a partir de una
+copia descargada de OneDrive. La prueba previa de recuperación aislada fue
+realizada desde el ZIP local y está registrada en backup-local.txt; no debe
+confundirse con una descarga desde OneDrive.
