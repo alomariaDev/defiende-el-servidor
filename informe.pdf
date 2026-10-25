@@ -1,0 +1,164 @@
+%PDF-1.4
+%âãÏÓ
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [6 0 R 8 0 R 10 0 R 12 0 R 14 0 R] /Count 5 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Length 2943 >>
+stream
+0.100 0.240 0.340 rg BT /F2 21.0 Tf 54.0 742.0 Td (Informe — Defiende el servidor) Tj ET
+0.000 0.000 0.000 rg BT /F2 11.0 Tf 54.0 714.0 Td (Autora: Maria Isabell Guzman) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 694.0 Td (Autora: Maria Isabell Guzman Problema: clasificación binaria de tráfico UNSW-NB15 \(normal=0,) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 679.0 Td (ataque=1\)) Tj ET
+0.100 0.240 0.340 rg BT /F2 17.0 Tf 54.0 660.0 Td (1. Datos y preparación) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 638.0 Td (El objetivo fue detectar ataques usando label como variable objetivo y 1 como clase positiva. El) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 623.0 Td (training-set tiene 175.341 filas y 45 columnas; se utilizaron 42 entradas predictoras, excluyendo) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 608.0 Td (label, attack_cat e id. La auditoría encontró cero faltantes, 56.000 ejemplos normales y 119.341) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 593.0 Td (ataques. El SHA-256 del training es) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 578.0 Td (bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa.) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 559.0 Td (Se identificaron 9.748 grupos de entradas idénticas, equivalentes a 74.301 ocurrencias adicionales) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 544.0 Td (sobre una primera fila, con grupo máximo de 415. En 229 grupos la misma entrada aparece con) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 529.0 Td (etiquetas distintas. La política fue preservar todas las observaciones y etiquetas, mantener cada) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 514.0 Td (grupo de predictores en una sola partición y dejar visibles las contradicciones, sin resolverlas) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 499.0 Td (mediante eliminación o relabeling. Con StratifiedGroupKFold, semilla 42, el primer fold separó train) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 484.0 Td (\(140.274 filas: 44.800 normales y 95.474 ataques\) de validación \(35.067: 11.200 normales y 23.867) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 469.0 Td (ataques\), sin grupos compartidos. El test no intervino en la elección del modelo o el umbral.) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 450.0 Td (El Pipeline ajusta imputador mediano y escalado estándar para numéricas, e imputador por moda y) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 435.0 Td (OneHotEncoder para categóricas, junto al estimador. Todo ajuste se hizo exclusivamente con train.) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 420.0 Td (Los datos originales y preparados se versionaron con DVC remoto accesible en DagsHub. Huellas de) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 405.0 Td (directorio: fe93051ae209ffb0128a31e7a478c009.dir \(raw\) y a065edaae55501c53239ceade3a3a8e0.dir) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 390.0 Td (\(procesados\).) Tj ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >>
+endobj
+7 0 obj
+<< /Length 2885 >>
+stream
+0.100 0.240 0.340 rg BT /F2 17.0 Tf 54.0 742.0 Td (2. Experimentos) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 720.0 Td (Las cuatro configuraciones usaron el mismo split y semilla 42. Se seleccionó el umbral maximizando) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 705.0 Td (macro-F1 en scores de validación de cada ejecución. La matriz de abajo sigue el orden [[TN, FP],) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 690.0 Td ([FN, TP]]. Precision/recall/F1 usan zero_division=0; FPR es FP/\(FP+TN\), definido como 0 cuando no) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 675.0 Td (hay negativos reales.) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.2 Tf 58.0 656.0 Td (Configuración  |  Hipótesis/cambio frente a anterior  |  Umbral  |  Recall  |  Precision  |  FPR  |  Macro-F1  |  Matriz) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.2 Tf 58.0 645.0 Td (LR C=1 \(lr_c1\)  |  Referencia lineal balanceada  |  0.3903680448122325  |  0.9789248753509029  |  0.9308737399896411  |) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.2 Tf 58.0 634.0 Td (0.1549107142857143  |  0.9242845966144494  |  [[9465,1735],[503,23364]]) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.2 Tf 58.0 623.0 Td (LR C=0.1 \(lr_c0_1\)  |  Más regularización que C=1  |  0.40173156466464144  |  0.9798047513302887  |  0.9286395044079104  |) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.2 Tf 58.0 612.0 Td (0.16044642857142857  |  0.9227249711857688  |  [[9403,1797],[482,23385]]) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.2 Tf 58.0 601.0 Td (Árbol profundidad 5 \(dt_depth5\)  |  Nueva familia no lineal, profundidad limitada  |  0.5302063907328993  |) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.2 Tf 58.0 590.0 Td (0.9401265345456069  |  0.9565180322278114  |  0.09107142857142857  |  0.9204407774366041  |  [[10180,1020],[1429,22438]]) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.2 Tf 58.0 579.0 Td (Árbol profundidad 15 \(dt_depth15\)  |  Más capacidad que el árbol de profundidad 5  |  0.3537730527816762  |) Tj ET
+0.000 0.000 0.000 rg BT /F1 8.2 Tf 58.0 568.0 Td (0.9558805044622282  |  0.9655084853358161  |  0.07276785714285715  |  0.9390771244547116  |  [[10385,815],[1053,22814]]) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 557.0 Td (El árbol de profundidad 15 consiguió el mayor macro-F1 de estas cuatro filas, además del menor FPR,) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 542.0 Td (mientras que LR C=1 obtuvo más recall. Esta comparación es relevante para interpretar la selección) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 527.0 Td (congelada: seleccion.json eligió LR C=1 como referencia para v1/v2 y optimizó su umbral en) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 512.0 Td (validación, no seleccionó el mejor macro-F1 global entre las cuatro configuraciones. La decisión v2) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 497.0 Td (se preserva para respetar la congelación y se señala como limitación del proceso de selección.) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 7 0 R >>
+endobj
+9 0 obj
+<< /Length 2998 >>
+stream
+0.100 0.240 0.340 rg BT /F2 17.0 Tf 54.0 742.0 Td (3. Versiones y decisión del umbral) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 720.0 Td (v1 quedó en el tag Git v1, commit c2891e168109f7ab89dec90ce8d188ac687c1539, con LR C=1 y umbral 0.5.) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 705.0 Td (En validación obtuvo recall 0.9539531570788118, precision 0.9479162329822224, FPR) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 690.0 Td (0.11169642857142857 y macro-F1 0.9226488208398218; matriz [[9949,1251],[1099,22768]].) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 671.0 Td (v2 quedó congelada en tag v2, commit f83efdcbb4eb75db01b4f27a79ed4a6393cc6e3c. El único cambio fue) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 656.0 Td (el umbral a 0.3903680448122325, elegido solo con la validación de LR C=1 para maximizar macro-F1;) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 641.0 Td (modelo y preprocesamiento no cambiaron. En validación, recall subió a 0.9789248753509029 y macro-F1) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 626.0 Td (a 0.9242845966144494. Precision bajó a 0.9308737399896411 y FPR subió a 0.1549107142857143. Se) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 611.0 Td (aceptaron 484 falsos positivos adicionales para reducir 596 falsos negativos. La política favorece) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 596.0 Td (detectar más ataques, con costo de alertas normales adicionales.) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 577.0 Td (El Pipeline completo se registró en MLflow local, run ffdf524d57f749d28b5ed7fceb0fa0bf, y se publicó) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 562.0 Td (en Hugging Face. SHA de revisión Hub v1: 04f723fe871e9b2f3b10b2ccd88cb2b45f587b53; v2:) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 547.0 Td (03e583e00e2c3d5dda0d0eb1fb9364ab1b86c2d6. SHA-256 del artefacto:) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 532.0 Td (e0f3019485ecfaa7418c7d4c31b7d130b1c5f003162de5f925d83561b7683dc3.) Tj ET
+0.100 0.240 0.340 rg BT /F2 17.0 Tf 54.0 513.0 Td (4. Recuperación) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 491.0 Td (En un checkout nuevo del commit ec8b14923f3a5539250030045b47793c8637d4f8 se instalaron dependencias) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 476.0 Td (fijadas, se hizo pull de DVC y se verificaron hashes de datos. Se descargaron v1 y v2 por sus SHA) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 461.0 Td (completos del Hub y se cargaron los pipelines. Para una muestra fija de 25 filas de validación,) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 446.0 Td (coincidieron los row_id, etiquetas y clases predichas con las salidas previas. La diferencia) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 431.0 Td (absoluta máxima de probabilidades fue 2.220446049250313e-16 para cada versión, dentro de tolerancia) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 416.0 Td (1e-12. La bitácora, hashes y comparaciones están en evidencias/recuperacion/run-20261025T195751Z/.) Tj ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 9 0 R >>
+endobj
+11 0 obj
+<< /Length 1843 >>
+stream
+0.100 0.240 0.340 rg BT /F2 17.0 Tf 54.0 742.0 Td (5. Evaluación única en test) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 720.0 Td (Después de congelar v2 se evaluó una vez el testing-set completo: 82.332 filas, sin descartar) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 705.0 Td (observaciones. Su SHA-256 es 734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559;) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 690.0 Td (clases: 37.000 normales y 45.332 ataques. La decisión fue ataque si score ? 0.3903680448122325. La) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 675.0 Td (matriz fue [[23531,13469],[1784,43548]]: TN=23.531, FP=13.469, FN=1.784, TP=43.548. Métricas: recall) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 660.0 Td (de ataque 0.9606459013500397, precision 0.763772208288756, FPR 0.36402702702702705, macro-F1) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 645.0 Td (0.8030990858090168 y accuracy 0.8147378904921537.) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 626.0 Td (Frente a validación con el mismo umbral, en test el recall bajó 0.018278974000863202, la precision) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 611.0 Td (bajó 0.16710153170088504, macro-F1 bajó 0.1211855108054326 y FPR aumentó 0.20911631274131276. No se) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 596.0 Td (reajustó el umbral ni el modelo. El solapamiento por huella de predictores fue de 6.930 filas de) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 581.0 Td (test \(1.047 grupos\) con train y 1.611 filas \(255 grupos\) con validación; no hubo filas/grupos) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 566.0 Td (compartidos con ambas. Las evidencias fila a fila y métricas están en) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 551.0 Td (evidencias/predicciones-test.csv y evidencias/metricas-test.json.) Tj ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 11 0 R >>
+endobj
+13 0 obj
+<< /Length 1894 >>
+stream
+0.100 0.240 0.340 rg BT /F2 17.0 Tf 54.0 742.0 Td (6. Limitaciones y conclusión) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 720.0 Td (La caída de precision, macro-F1 y FPR observado en test muestra que el desempeño de validación no se) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 705.0 Td (trasladó completamente. El solapamiento de patrones idénticos entre test y los datos de desarrollo y) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 690.0 Td (las etiquetas contradictorias dentro de grupos son aspectos de los datos que dificultan interpretar) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 675.0 Td (generalización y techo de rendimiento. Además, solo se usó un split agrupado con semilla fija; no se) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 660.0 Td (reporta variación entre semillas ni calibración independiente. La selección de v2 se centró en la) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 645.0 Td (curva de umbral de LR C=1 y no fue la mejor puntuación global de las cuatro configuraciones. El) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 630.0 Td (umbral elegido eleva falsos positivos, por lo que su uso operacional requeriría valorar el costo de) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 615.0 Td (alertas y validar en el contexto de despliegue. Estas limitaciones no justifican alterar) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 600.0 Td (retrospectivamente el resultado final.) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 581.0 Td (Uso de IA: Codex ayudó a escribir y depurar scripts, revisar coherencia de evidencias y redactar) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 566.0 Td (este borrador. Cifras, hashes, commits y run IDs se tomaron de los artefactos y salidas reales del) Tj ET
+0.000 0.000 0.000 rg BT /F1 10.2 Tf 54.0 551.0 Td (workspace; no se fabricaron resultados. La autora es responsable de la revisión y entrega.) Tj ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 13 0 R >>
+endobj
+xref
+0 15
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000148 00000 n 
+0000000245 00000 n 
+0000000347 00000 n 
+0000003342 00000 n 
+0000003478 00000 n 
+0000006415 00000 n 
+0000006551 00000 n 
+0000009601 00000 n 
+0000009738 00000 n 
+0000011634 00000 n 
+0000011772 00000 n 
+0000013719 00000 n 
+trailer
+<< /Size 15 /Root 1 0 R >>
+startxref
+13857
+%%EOF
