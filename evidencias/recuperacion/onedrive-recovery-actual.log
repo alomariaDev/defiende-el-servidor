@@ -1,0 +1,36 @@
+Recuperación desde el archivo descargado de OneDrive
+
+La usuaria descargó el archivo desde OneDrive en una ventana de incógnito.
+El ZIP puesto a disposición del workspace tuvo esta huella:
+  SHA-256: 10a4833e607a86ad3d6a530fc70b0e5a3fd9593c6d9e2ba81810559746ef6b9a
+
+Prueba:
+  commit del clon: 9c02f304ea6441c6a872b2acf121b9f960cee278
+  cache DVC y directorios de datos del clon: vacíos antes de empezar
+  DVC: 3.67.1
+  credenciales AWS, DagsHub y Hugging Face: variables anuladas
+
+Comandos ejecutados desde la raíz del clon temporal:
+  dvc remote add --local backup ../dvc-backup
+  env -u AWS_ACCESS_KEY_ID -u AWS_SECRET_ACCESS_KEY -u AWS_SESSION_TOKEN -u DAGSHUB_TOKEN -u HF_TOKEN dvc pull -r backup data/raw.dvc data/processed.dvc
+  env -u AWS_ACCESS_KEY_ID -u AWS_SECRET_ACCESS_KEY -u AWS_SESSION_TOKEN -u DAGSHUB_TOKEN -u HF_TOKEN dvc status -c -r backup
+  sha256sum data/raw/UNSW_NB15_training-set.csv data/raw/UNSW_NB15_testing-set.csv data/processed/train.csv data/processed/val.csv data/processed/split_indices.csv
+
+Salida real de DVC:
+  A       data/processed/
+  A       data/raw/
+  7 files fetched and 5 files added
+  Cache and remote 'backup' are in sync.
+
+SHA-256 comprobados:
+  bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa  data/raw/UNSW_NB15_training-set.csv
+  734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559  data/raw/UNSW_NB15_testing-set.csv
+  a3e8529f58a72c7ad07251e0e9edced1714b8610c25bb7cea3294fdb5e16cd0f  data/processed/train.csv
+  6dc01d121473736aa962d9289e1e5a93ca4396a25075a32cd2f5e86211c36e2b  data/processed/val.csv
+  3aba38d80b2125c9e6c1eb6c4ede8bad59c526cfaba96ad8075414d11a94863f  data/processed/split_indices.csv
+
+Alcance/limitación: el clon, el cache DVC y los datos eran nuevos; para esta
+prueba se usó el ejecutable DVC ya instalado en el workspace. La instalación
+de requirements.txt en un venv nuevo se inició sin cache, pero se canceló
+por la baja velocidad de descarga. Esta ejecución verifica la descarga del
+backup y la recuperación DVC, no una instalación completa de dependencias.

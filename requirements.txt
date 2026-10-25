@@ -1,6 +1,7 @@
 numpy==2.5.3
 pandas==2.3.3
 scikit-learn==1.9.1
+skops==0.16.0
 joblib==1.6.0
 PyYAML==6.0.3
 mlflow==3.17.2

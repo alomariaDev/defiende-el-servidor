@@ -19,3 +19,11 @@ el enlace. Por ello, aquí no se pudo ejecutar la recuperación a partir de una
 copia descargada de OneDrive. La prueba previa de recuperación aislada fue
 realizada desde el ZIP local y está registrada en backup-local.txt; no debe
 confundirse con una descarga desde OneDrive.
+
+Addendum posterior: la autora descargó el archivo desde OneDrive en incógnito
+y lo puso a disposición del workspace. Su SHA-256 fue
+10a4833e607a86ad3d6a530fc70b0e5a3fd9593c6d9e2ba81810559746ef6b9a. Con esa
+copia se hizo después un clon/cache DVC vacío; sin credenciales, el pull
+recuperó los siete objetos y los cinco archivos tuvieron los SHA esperados.
+El log detallado está en onedrive-recovery-actual.log. La instalación de
+dependencias del venv nuevo no terminó por la velocidad de descarga.
