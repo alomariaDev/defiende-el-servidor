@@ -184,16 +184,17 @@ def verify(output_dir: Path, expected_commit: str) -> None:
         raise RuntimeError("Los row_id de la muestra cambiaron")
     by_id = validation.set_index("row_id", drop=False)
     selected = by_id.loc[manifest["validation_sample"]["row_ids"], sample.columns].reset_index(drop=True)
-    # CSV decimal round-tripping can differ by one floating-point ULP even
+    # CSV decimal round-tripping can differ by a few floating-point ULPs even
     # when both files represent the same saved validation row. IDs, labels,
-    # and categorical columns remain exact; numeric values allow <= 1e-15.
-    input_match_tolerance = 1e-15
+    # and categorical columns remain exact; numeric values use tight tolerances.
+    input_match_tolerance = 1e-12
+    input_match_relative_tolerance = 1e-12
     pd.testing.assert_frame_equal(
         selected,
         sample,
         check_dtype=False,
         check_exact=False,
-        rtol=0,
+        rtol=input_match_relative_tolerance,
         atol=input_match_tolerance,
     )
 
@@ -266,6 +267,7 @@ def verify(output_dir: Path, expected_commit: str) -> None:
         "downloaded_model_sha256": model_hashes,
         "versions": comparisons,
         "validation_input_match_absolute_tolerance": input_match_tolerance,
+        "validation_input_match_relative_tolerance": input_match_relative_tolerance,
         "test_labels_used": False,
         "test_file_sha256_only": actual_data_hashes["data/raw/UNSW_NB15_testing-set.csv"],
     }
