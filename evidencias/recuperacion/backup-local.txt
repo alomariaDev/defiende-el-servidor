@@ -1,0 +1,37 @@
+Evidencia de backup DVC local y recuperación desde ZIP
+
+Comandos ejecutados en el repositorio:
+  dvc remote add --local backup ../dvc-backup
+  dvc push -r backup data/raw.dvc data/processed.dvc
+  dvc status -c -r backup
+
+Salida del push:
+  7 files pushed
+
+Salida de verificación de contenido remoto:
+  Cache and remote 'backup' are in sync.
+
+El ZIP fue creado con Python zipfile desde el directorio del remote y su
+integridad se verificó reabriéndolo y comprobando sus entradas. Resultado:
+  files=7
+  uncompressed_bytes=83096749
+  zip_bytes=21154524
+  integrity=OK
+  SHA-256 dvc-backup.zip=10a4833e607a86ad3d6a530fc70b0e5a3fd9593c6d9e2ba81810559746ef6b9
+
+Prueba aislada: clon limpio del repositorio, extracción del ZIP y pull sin
+credenciales. Salida de dvc pull:
+  A       data/processed/
+  A       data/raw/
+  7 files fetched and 5 files added
+
+SHA-256 comprobados tras la recuperación:
+  data/raw/UNSW_NB15_training-set.csv bec7dd5ec88dc2a0ccc7a07879d338395ed7421750f675fd0339e07dfe0648fa OK
+  data/raw/UNSW_NB15_testing-set.csv 734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559 OK
+  data/processed/train.csv a3e8529f58a72c7ad07251e0e9edced1714b8610c25bb7cea3294fdb5e16cd0f OK
+  data/processed/val.csv 6dc01d121473736aa962d9289e1e5a93ca4396a25075a32cd2f5e86211c36e2b OK
+  data/processed/split_indices.csv 3aba38d80b2125c9e6c1eb6c4ede8bad59c526cfaba96ad8075414d11a94863f OK
+
+El archivo dvc-backup.zip y la carpeta dvc-backup permanecen fuera de Git;
+el ZIP debe compartirse junto con el repositorio para que otra persona pueda
+recrear este remote local.

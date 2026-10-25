@@ -71,6 +71,20 @@ dvc pull -r dagshub-public data/raw.dvc data/processed.dvc
 
 El comando solicita el token como contraseña de forma interactiva. La lectura anónima permanece pendiente de resolución/verificación; si el taller exige que no se solicite token al docente, este resultado debe considerarse una limitación del acceso actual.
 
+## Backup DVC portable para recuperación
+
+Se creó el remote DVC local `backup` en una carpeta hermana al repositorio. `dvc push -r backup data/raw.dvc data/processed.dvc` terminó con `7 files pushed`; `dvc status -c -r backup` respondió `Cache and remote 'backup' are in sync.` El archivo `dvc-backup.zip` contiene esos 7 objetos, pasó la prueba de integridad ZIP y ocupa 21.154.524 bytes. Su SHA-256 medido con `sha256sum` es `10a4833e607a86ad3d6a530fc70b0e5a3fd9593c6d9e2ba81810559746ef6b9`.
+
+El directorio `dvc-backup/` y el ZIP están fuera del repositorio y no se versionan en Git; hay que entregar el ZIP junto con el clon. Desde la raíz del repo, si el ZIP está en la carpeta padre:
+
+```bash
+python -m zipfile -e ../dvc-backup.zip ..
+dvc remote add --local backup ../dvc-backup
+dvc pull -r backup data/raw.dvc data/processed.dvc
+```
+
+`--local` mantiene la ruta del equipo fuera de `.dvc/config` versionado. La comprobación real con `dvc status -c -r backup` está registrada en la sesión de trabajo; el remote local de la autora, por sí solo, no es accesible desde otro equipo: la otra persona necesita recibir y extraer `dvc-backup.zip`.
+
 ## Evaluación final única en test
 
 Se evaluaron una vez las 82.332 filas del testing-set con v2 congelada y regla `y_pred=1` si `score_attack >= 0.3903680448122325`; no se descartaron filas ni se modificó el modelo/umbral. El test contiene label 0: 37.000 y label 1: 45.332.

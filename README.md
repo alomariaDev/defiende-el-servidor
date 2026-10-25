@@ -27,6 +27,18 @@ dvc pull data/raw.dvc data/processed.dvc
 
 Para un clone nuevo también puedes comprobar los objetos con `dvc status -c`. Los hashes DVC esperados están en `data/*.dvc`; SHA-256 de los CSV recuperados y verificados están en `evidencias/recuperacion/`.
 
+### Recuperar desde el ZIP de backup DVC
+
+El archivo `dvc-backup.zip` se distribuye aparte del repositorio porque contiene una copia local del cache DVC y no está guardado en Git. Coloca el ZIP en la carpeta padre del clon del repositorio. Desde la raíz del repo, descomprímelo y configura el remote local:
+
+```bash
+python -m zipfile -e ../dvc-backup.zip ..
+dvc remote add --local backup ../dvc-backup
+dvc pull -r backup data/raw.dvc data/processed.dvc
+```
+
+La configuración se guarda solo en `.dvc/config.local`. Si el ZIP está en otra ubicación, ajusta la ruta del archivo al extraerlo y la ruta del directorio en `dvc remote add`.
+
 ## Ejecutar un experimento
 
 `configs/experiments.yaml` declara las cuatro configuraciones y sus hipótesis. El script reutiliza los splits ya preparados, ajusta la imputación, codificación, escalado y estimador solo con train, evalúa umbrales solo en validación y registra el pipeline completo localmente:
