@@ -1,0 +1,92 @@
+{
+  "version": "v2",
+  "model": {
+    "artifact_sha256": "e0f3019485ecfaa7418c7d4c31b7d130b1c5f003162de5f925d83561b7683dc3",
+    "huggingface_repo_id": "mariisabell/unsw-nb15-detector",
+    "huggingface_commit_sha": "03e583e00e2c3d5dda0d0eb1fb9364ab1b86c2d6",
+    "frozen_git_tag": "v2",
+    "frozen_git_commit": "f83efdcbb4eb75db01b4f27a79ed4a6393cc6e3c",
+    "mlflow_run_id": "ffdf524d57f749d28b5ed7fceb0fa0bf"
+  },
+  "dataset": {
+    "path": "data/raw/UNSW_NB15_testing-set.csv",
+    "sha256": "734fe6642edf758f7c94d7d9149426b49d202fe8e7bf0bef47392489c3c0a559",
+    "dvc_raw_directory_md5": "fe93051ae209ffb0128a31e7a478c009.dir",
+    "dvc_processed_directory_md5": "a065edaae55501c53239ceade3a3a8e0.dir",
+    "rows_evaluated": 82332,
+    "rows_expected": 82332,
+    "all_rows_retained": true,
+    "class_counts": {
+      "0": 37000,
+      "1": 45332
+    }
+  },
+  "decision": {
+    "threshold": 0.3903680448122325,
+    "rule": "y_pred = 1 (attack) si score_attack >= threshold; en otro caso y_pred = 0 (normal).",
+    "positive_class": 1,
+    "positive_class_meaning": "attack"
+  },
+  "confusion_matrix": {
+    "labels": [
+      0,
+      1
+    ],
+    "rows_true_columns_predicted": [
+      [
+        23531,
+        13469
+      ],
+      [
+        1784,
+        43548
+      ]
+    ],
+    "tn": 23531,
+    "fp": 13469,
+    "fn": 1784,
+    "tp": 43548
+  },
+  "metrics": {
+    "recall_attack": 0.9606459013500397,
+    "precision_attack": 0.763772208288756,
+    "fpr": 0.36402702702702705,
+    "macro_f1": 0.8030990858090168,
+    "accuracy": 0.8147378904921537
+  },
+  "zero_denominator_policy": "precision/recall/macro-F1 usan zero_division=0; FPR=0 si no hay negativos reales (FP+TN=0).",
+  "validation_comparison": {
+    "validation_reference_at_frozen_threshold": {
+      "recall_attack": 0.9789248753509029,
+      "precision_attack": 0.9308737399896411,
+      "fpr": 0.1549107142857143,
+      "macro_f1": 0.9242845966144494
+    },
+    "test_minus_validation": {
+      "recall_attack": -0.018278974000863202,
+      "precision_attack": -0.16710153170088504,
+      "fpr": 0.20911631274131276,
+      "macro_f1": -0.1211855108054326
+    },
+    "model_or_threshold_changed_after_freeze": false
+  },
+  "input_overlap": {
+    "method": "pandas hash_pandas_object uint64 sobre las 42 variables predictoras; se excluyen id/row_id, label y attack_cat; dtypes numéricos normalizados a float64 y categóricos a string.",
+    "test_rows_matching_train": 6930,
+    "test_unique_groups_matching_train": 1047,
+    "test_rows_matching_validation": 1611,
+    "test_unique_groups_matching_validation": 255,
+    "test_rows_matching_both_train_and_validation": 0,
+    "test_unique_groups_matching_both": 0,
+    "test_unique_input_groups": 53946,
+    "train_val_overlap_groups": 0
+  },
+  "evaluation": {
+    "inference_calls": 1,
+    "test_labels_used_for_selection_or_threshold": false,
+    "test_rows_dropped": 0,
+    "workspace_git_commit_at_evaluation": "89b481b42a35c6b9f21f2d0068f321bc6e02321e"
+  },
+  "predictions_file": "evidencias/predicciones-test.csv",
+  "predictions_file_sha256": "f02e69daa4ac9177f59cc26b378c25166c30df4a771218297ae770f6e4dfcb51"
+}
