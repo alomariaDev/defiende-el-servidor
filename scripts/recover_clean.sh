@@ -49,14 +49,15 @@ RUN_ID="$(date -u +%Y%m%dT%H%M%SZ)"
 OUTPUT_DIR="$REPO_DIR/evidencias/recuperacion/run-$RUN_ID"
 
 finalize() {
-  status=$?
+  local status=$?
+  trap - EXIT
   if [[ -d "$REPO_DIR/evidencias/recuperacion" ]]; then
     mkdir -p "$OUTPUT_DIR"
     cp "$LOG_FILE" "$OUTPUT_DIR/commands.log"
     sha256sum "$OUTPUT_DIR/commands.log" > "$OUTPUT_DIR/commands.log.sha256"
     echo "Log de comandos: $OUTPUT_DIR/commands.log"
   fi
-  return "$status"
+  exit "$status"
 }
 trap finalize EXIT
 
@@ -64,8 +65,8 @@ run git clone --no-checkout "$REPO_URL" "$REPO_DIR"
 run git -C "$REPO_DIR" checkout --detach "$RECOVERY_COMMIT"
 run python3 -m venv "$VENV_DIR"
 run "$VENV_DIR/bin/python" -m pip install --no-cache-dir -r "$REPO_DIR/requirements-recovery.txt"
-run "$VENV_DIR/bin/dvc" -C "$REPO_DIR" config --local cache.dir "$WORK_DIR/dvc-cache"
-run "$VENV_DIR/bin/dvc" -C "$REPO_DIR" pull data/raw.dvc data/processed.dvc
+run "$VENV_DIR/bin/dvc" --cd "$REPO_DIR" config --local cache.dir "$WORK_DIR/dvc-cache"
+run "$VENV_DIR/bin/dvc" --cd "$REPO_DIR" pull data/raw.dvc data/processed.dvc
 
 export HF_HOME="$WORK_DIR/hf-home"
 echo "HF_HOME=$HF_HOME (directorio nuevo; el valor del token nunca se registra)"
